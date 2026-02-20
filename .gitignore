@@ -12,3 +12,4 @@ iTransformer/checkpoints
 iTransformer/test_results
 iTransformer/results
 */result_long_term_forecast.txt
+*/logs

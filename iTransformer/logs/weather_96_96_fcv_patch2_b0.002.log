@@ -23,3 +23,8 @@ test 10444
 	speed: 0.0794s/iter; left time: 846.8430s
 	iters: 900, epoch: 1 | loss: 0.5014121
 	speed: 0.0796s/iter; left time: 840.7920s
+	iters: 1000, epoch: 1 | loss: 0.3044917
+	speed: 0.0796s/iter; left time: 832.9306s
+	iters: 1100, epoch: 1 | loss: 0.5357858
+	speed: 0.0797s/iter; left time: 825.3403s
+Epoch: 1 cost time: 94.23584175109863
