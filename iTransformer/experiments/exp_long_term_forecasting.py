@@ -172,7 +172,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                         Cy = torch.bmm(Y_t, Y) / T   # [B, D, D]
 
                         loss_add = (Cx - Cy).abs().mean()
-                    elif self.args.add_loss == "channel":
+                    elif self.args.add_loss == "scv":    # spatial cross-variable
                         # channel diff
                         if self.args.num_pairs == "max":
                             num_pairs = max_pairs
@@ -188,7 +188,63 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                         true_diff = batch_y[:,:,idx_i] - batch_y[:,:,idx_j]
 
                         loss_add = (pred_diff - true_diff).abs().mean()
-                    elif self.args.add_loss == "st":
+                    elif self.args.add_loss == "stcv":   # spatio-temporal cross-variable
+                        # patch loss diff
+
+                        patch_len = self.args.loss_patchlen
+                        stride    = patch_len
+
+                        if (T - patch_len) % stride != 0:
+                            raise ValueError("(T - patch_len) % stride != 0")
+
+                        out_p = outputs.unfold(1, patch_len, stride)   # [B, P, D, L]
+                        y_p   = batch_y.unfold(1, patch_len, stride)
+
+                        out_p = out_p.permute(0, 1, 3, 2).contiguous()  # [B, P, L, D]
+                        y_p   = y_p.permute(0, 1, 3, 2).contiguous()
+
+                        B, P, L, D = out_p.shape
+
+                        out_nodes = out_p.permute(0,1,3,2).reshape(B, P*D, L)
+                        y_nodes   = y_p.permute(0,1,3,2).reshape(B, P*D, L)
+
+                        N = P * D
+
+                        max_pairs = N * (N - 1) // 2
+                        if self.args.num_pairs == "max":
+                            num_pairs = max_pairs
+                        elif self.args.num_pairs.isdigit():
+                            num_pairs = min(num_pairs, max_pairs)
+                        else:
+                            raise ValueError("num_pair error")
+
+                        idx_i = torch.randint(0, N, (num_pairs,), device=device)
+                        idx_j = torch.randint(0, N, (num_pairs,), device=device)
+
+                        # 禁止同变量patch间交互
+                        patch_i = idx_i // D
+                        patch_j = idx_j // D
+
+                        var_i = idx_i % D
+                        var_j = idx_j % D
+
+                        mask = ~((var_i == var_j) & (patch_i != patch_j))
+
+                        mask = mask & (idx_i != idx_j)
+                        # 禁止同变量patch间交互
+
+                        # 取消相同时间 patch 的交互
+                        mask = mask & (patch_i != patch_j)
+                        # 取消相同时间 patch 的交互
+
+                        idx_i = idx_i[mask]
+                        idx_j = idx_j[mask]
+
+                        pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
+                        true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
+
+                        loss_add = (pred_diff - true_diff).abs().mean()
+                    elif self.args.add_loss == "fcv":    # full cross-variable
                         # patch loss diff
 
                         patch_len = self.args.loss_patchlen

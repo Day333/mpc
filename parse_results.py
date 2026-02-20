@@ -22,19 +22,15 @@ def parse_line(header_line, metric_line):
     pred_len = int(parts[5])
     model = parts[6]
 
-    # addloss
     addloss_match = re.search(r"addloss(.*?)_", header_line)
     addloss = addloss_match.group(1) if addloss_match else "None"
 
-    # numpairs
     numpairs_match = re.search(r"numpairs(.*?)_", header_line)
     numpairs = numpairs_match.group(1) if numpairs_match else None
 
-    # alpha
     alpha_match = re.search(r"alpha([0-9\.]+)", header_line)
     alpha = float(alpha_match.group(1)) if alpha_match else None
 
-    # beta
     beta_match = re.search(r"beta([0-9\.]+)", header_line)
     beta = float(beta_match.group(1)) if beta_match else None
 
@@ -73,17 +69,59 @@ def parse_file(filepath):
     return pd.DataFrame(results)
 
 
+def print_grouped_results(df, include_addloss=False):
+
+    for dataset in sorted(df["dataset"].unique()):
+
+        print("\n" + "=" * 80)
+        print(f"DATASET: {dataset}")
+        print("=" * 80)
+
+        df_dataset = df[df["dataset"] == dataset]
+
+        for input_len in sorted(df_dataset["input_len"].unique()):
+
+            print(f"\n---- Input Length: {input_len} ----")
+
+            df_input = df_dataset[df_dataset["input_len"] == input_len]
+            df_input = df_input.sort_values("pred_len")
+
+            if not include_addloss:
+                display_cols = ["pred_len", "model", "mse", "mae"]
+            else:
+                display_cols = [
+                    "pred_len",
+                    "model",
+                    "addloss",
+                    "numpairs",
+                    "alpha",
+                    "beta",
+                    "mse",
+                    "mae",
+                ]
+
+            print(df_input[display_cols].to_string(index=False))
+
+            # ===== 计算 AVG =====
+            avg_mse = df_input["mse"].mean()
+            avg_mae = df_input["mae"].mean()
+
+            print("\nAVG over pred_len:")
+            print(f"MSE: {avg_mse:.6f}, MAE: {avg_mae:.6f}")
+            print("-" * 60)
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--include-addloss",
         action="store_true",
-        help="addloss",
+        help="Include addloss experiments",
     )
     parser.add_argument(
         "--file",
         type=str,
-        default="./iTransformer/result_long_term_forecast.txt",
+        default="./TimeFilter/baseline.txt",
     )
 
     args = parser.parse_args()
@@ -93,35 +131,7 @@ def main():
     if not args.include_addloss:
         df = df[df["addloss"] == "None"]
 
-        table = df.sort_values(
-            ["dataset", "input_len", "pred_len"]
-        )[
-            ["dataset", "input_len", "pred_len", "model", "mse", "mae"]
-        ]
-
-        print("\n=== Results (No AddLoss Only) ===\n")
-        print(table.to_string(index=False))
-
-    else:
-        table = df.sort_values(
-            ["dataset", "input_len", "pred_len"]
-        )[
-            [
-                "dataset",
-                "input_len",
-                "pred_len",
-                "model",
-                "addloss",
-                "numpairs",
-                "alpha",
-                "beta",
-                "mse",
-                "mae",
-            ]
-        ]
-
-        print("\n=== Results (Including AddLoss) ===\n")
-        print(table.to_string(index=False))
+    print_grouped_results(df, include_addloss=args.include_addloss)
 
 
 if __name__ == "__main__":
