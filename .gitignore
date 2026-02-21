@@ -14,3 +14,10 @@ iTransformer/results
 */result_long_term_forecast.txt
 */logs/
 iTransformer/logs/
+TQNet/.idea/
+TQNet/*.pyc
+TQNet/dataset/
+TQNet/test_results/
+TQNet/results/
+TQNet/logs/
+TQNet/checkpoints

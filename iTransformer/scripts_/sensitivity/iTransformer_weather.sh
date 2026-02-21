@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-
 MAX_JOBS=4
 TOTAL_GPUS=4
 MAX_RETRIES=1
@@ -38,6 +37,11 @@ run_job() {
   echo >&9
 }
 
+# 判断是否已有最终结果
+is_finished() {
+  local log_file="$1"
+  grep -Eq 'mse:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?,[[:space:]]*mae:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?' "$log_file"
+}
 
 model_name=iTransformer
 seq_len=96
@@ -49,29 +53,35 @@ root_path=./dataset/weather/
 data_path=weather.csv
 
 job_idx=0
+mkdir -p logs
 
 for pred_len in "${pred_lens[@]}"; do
   for patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
 
-      read -u9  # semaphore
+      read -u9  # semaphore token
 
-      {
-        gpu_id=$((job_idx % TOTAL_GPUS))
-        job_idx=$((job_idx + 1))
-
-        # alpha = 1 - beta
-        alpha=$(python - <<PY
+      # 计算 alpha
+      alpha=$(python - <<PY
 b=float("${beta}")
 a=1.0-b
 print(f"{a:.6f}".rstrip('0').rstrip('.'))
 PY
 )
 
-        model_id="weather_${seq_len}_${pred_len}_fcv_patch${patchlen}_b${beta}"
+      model_id="weather_${seq_len}_${pred_len}_fcv_patch${patchlen}_b${beta}"
+      log_file="logs/${model_id}.log"
 
-        log_file="logs/${model_id}.log"
-        mkdir -p logs
+      # ✅ 已完成则跳过
+      if [ -f "$log_file" ] && is_finished "$log_file"; then
+        echo "⏭ Skip (finished): $model_id"
+        echo >&9
+        continue
+      fi
+
+      {
+        gpu_id=$((job_idx % TOTAL_GPUS))
+        job_idx=$((job_idx + 1))
 
         cmd="python -u run.py \
           --is_training 1 \
