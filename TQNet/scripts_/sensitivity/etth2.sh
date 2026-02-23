@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+
 MAX_JOBS=4
-AVAILABLE_GPUS=(1 2 3 4)
+AVAILABLE_GPUS=(5 6)
 MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
-SEMAPHORE=/tmp/gs_semaphore
+SEMAPHORE=/tmp/gs_semaphore_tqnet
 mkfifo $SEMAPHORE
 exec 9<>$SEMAPHORE
 rm $SEMAPHORE
@@ -31,7 +33,7 @@ run_job() {
       echo "❌ [GPU $gpu_id] Failed: $model_id (Attempt $((attempt+1)))"
       attempt=$((attempt + 1))
       if (( attempt > MAX_RETRIES )); then
-        echo "$cmd" >> failures.txt
+        echo "$cmd" >> failures_tqnet.txt
       fi
     fi
   done
@@ -44,14 +46,19 @@ is_finished() {
   grep -Eq 'mse:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?,[[:space:]]*mae:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?' "$log_file"
 }
 
-model_name=iTransformer
+model_name=TQNet
+root_path=./dataset/
+data_path=ETTh2.csv
+data_name=ETTh2
+model_id_name=ETTh2
+
 seq_len=96
+enc_in=7
+random_seed=2024
+
 pred_lens=(96 192 336 720)
 patchlens=(2 4 8 16 24)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
-
-root_path=./dataset/weather/
-data_path=weather.csv
 
 job_idx=0
 mkdir -p logs
@@ -69,7 +76,7 @@ print(f"{a:.6f}".rstrip('0').rstrip('.'))
 PY
 )
 
-      model_id="weather_${seq_len}_${pred_len}_fcv_patch${patchlen}_b${beta}"
+      model_id="${model_id_name}_${seq_len}_${pred_len}_fcv_patch${patchlen}_b${beta}"
       log_file="logs/${model_id}.log"
 
       if [ -f "$log_file" ] && is_finished "$log_file"; then
@@ -89,18 +96,19 @@ PY
           --data_path ${data_path} \
           --model_id ${model_id} \
           --model ${model_name} \
-          --data custom \
+          --data ${data_name} \
           --features M \
           --seq_len ${seq_len} \
           --pred_len ${pred_len} \
-          --e_layers 3 \
-          --enc_in 21 \
-          --dec_in 21 \
-          --c_out 21 \
-          --des Exp \
-          --d_model 512 \
-          --d_ff 512 \
+          --enc_in ${enc_in} \
+          --cycle 24 \
+          --train_epochs 30 \
+          --patience 5 \
+          --dropout 0.5 \
           --itr 1 \
+          --batch_size 256 \
+          --learning_rate 0.001 \
+          --random_seed ${random_seed} \
           --add_loss fcv \
           --loss_patchlen ${patchlen} \
           --alpha_add_loss ${alpha} \

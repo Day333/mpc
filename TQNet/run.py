@@ -98,6 +98,14 @@ parser.add_argument('--use_multi_gpu', action='store_true', help='use multiple g
 parser.add_argument('--devices', type=str, default='0,1', help='device ids of multile gpus')
 parser.add_argument('--test_flop', action='store_true', default=False, help='See utils/tools for usage')
 
+################################### add #####################################
+parser.add_argument('--add_loss', type=str, default='None', help='Dependency-Aware Loss')
+parser.add_argument('--num_pairs', type=str, default='max', help='num_pairs')
+parser.add_argument('--loss_patchlen', type=int, default=16, help='loss_patchlen')
+parser.add_argument('--alpha_add_loss', type=float, default=1.0, help='alpha')
+parser.add_argument('--beta_add_loss', type=float, default=0.1, help='beta')
+################################### add #####################################
+
 args = parser.parse_args()
 
 # random seed
@@ -125,15 +133,16 @@ if args.is_training:
     for ii in range(args.itr):
 
         # setting record of experiments
-        setting = '{}_{}_{}_ft{}_sl{}_pl{}_cycle{}_seed{}'.format(
-            args.model_id,
-            args.model,
-            args.data,
-            args.features,
-            args.seq_len,
-            args.pred_len,
-            args.cycle,
-            fix_seed)
+        setting = 'long_term_forecast_{}_{}_{}_addloss{}_numpairs{}_patchlen{}_alpha{}_beta{}'.format(
+                args.model_id,
+                args.model,
+                args.data,
+                args.add_loss,
+                args.num_pairs,
+                args.loss_patchlen,
+                args.alpha_add_loss,
+                args.beta_add_loss
+                )
 
         exp = Exp(args)  # set experiments
         print('>>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>'.format(setting))
@@ -149,15 +158,16 @@ if args.is_training:
         torch.cuda.empty_cache()
 else:
     ii = 0
-    setting = '{}_{}_{}_ft{}_sl{}_pl{}_cycle{}_seed{}'.format(
-        args.model_id,
-        args.model,
-        args.data,
-        args.features,
-        args.seq_len,
-        args.pred_len,
-        args.cycle,
-        fix_seed)
+    setting = 'long_term_forecast_{}_{}_{}_addloss{}_numpairs{}_patchlen{}_alpha{}_beta{}'.format(
+                args.model_id,
+                args.model,
+                args.data,
+                args.add_loss,
+                args.num_pairs,
+                args.loss_patchlen,
+                args.alpha_add_loss,
+                args.beta_add_loss
+                )
 
     exp = Exp(args)  # set experiments
     print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))

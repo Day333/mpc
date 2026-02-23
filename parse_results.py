@@ -102,7 +102,6 @@ def print_grouped_results(df, include_addloss=False):
 
             print(df_input[display_cols].to_string(index=False))
 
-            # ===== 计算 AVG =====
             avg_mse = df_input["mse"].mean()
             avg_mae = df_input["mae"].mean()
 

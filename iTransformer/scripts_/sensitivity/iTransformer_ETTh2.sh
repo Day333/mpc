@@ -37,12 +37,10 @@ run_job() {
   echo >&9
 }
 
-# 判断log是否已包含最终指标（mse/mae）
+
 is_finished() {
   local log_file="$1"
-  # 支持：
-  # mse:0.223..., mae:0.258...
-  # mse: 0.223..., mae: 0.258...
+
   grep -Eq 'mse:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?,[[:space:]]*mae:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?' "$log_file"
 }
 
@@ -51,7 +49,7 @@ model_name=iTransformer
 seq_len=96
 pred_lens=(96 192 336 720)
 
-patchlens=(2 4 8 16 32)
+patchlens=(2 4 8 16 24)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
 root_path=./dataset/ETT-small/

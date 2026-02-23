@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-MAX_JOBS=4
-TOTAL_GPUS=4
+MAX_JOBS=2
+AVAILABLE_GPUS=(5 6)
 MAX_RETRIES=1
+
+NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
 SEMAPHORE=/tmp/gs_semaphore
 mkfifo $SEMAPHORE
@@ -47,7 +49,7 @@ model_name=iTransformer
 seq_len=96
 pred_lens=(96 192 336 720)
 
-patchlens=(2 4 8 16 32)
+patchlens=(2 4 8 16 24)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
 root_path=./dataset/electricity/
@@ -61,9 +63,8 @@ for pred_len in "${pred_lens[@]}"; do
   for patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
 
-      read -u9  # semaphore token
+      read -u9  
 
-      # alpha = 1 - beta
       alpha=$(python - <<PY
 b=float("${beta}")
 a=1.0-b
@@ -80,10 +81,12 @@ PY
         continue
       fi
 
-      {
-        gpu_id=$((job_idx % TOTAL_GPUS))
-        job_idx=$((job_idx + 1))
+      # Calculate GPU ID outside the subshell to ensure proper cycling
+      gpu_index=$((job_idx % NUM_GPUS))
+      gpu_id=${AVAILABLE_GPUS[$gpu_index]}
+      job_idx=$((job_idx + 1))
 
+      {
         cmd="python -u run.py \
           --is_training 1 \
           --root_path ${root_path} \

@@ -177,8 +177,8 @@ class Exp_Main(Exp_Basic):
                         f_dim = -1 if self.args.features == 'MS' else 0
                         outputs = outputs[:, -self.args.pred_len:, f_dim:]
                         batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-                        loss = criterion(outputs, batch_y)
-                        train_loss.append(loss.item())
+                        # loss = criterion(outputs, batch_y)
+                        # train_loss.append(loss.item())
                 else:
                     if any(substr in self.args.model for substr in {'CycleNet', 'TQ'}):
                         outputs = self.model(batch_x, batch_cycle)
@@ -194,8 +194,168 @@ class Exp_Main(Exp_Basic):
                     f_dim = -1 if self.args.features == 'MS' else 0
                     outputs = outputs[:, -self.args.pred_len:, f_dim:]
                     batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-                    loss = criterion(outputs, batch_y)
-                    train_loss.append(loss.item())
+                    # loss = criterion(outputs, batch_y)
+                    # train_loss.append(loss.item())
+                ##################### add #####################
+                loss_tmp = criterion(outputs, batch_y)
+                B, T, D = outputs.shape
+                device = outputs.device
+
+                if self.args.add_loss == "corr":
+                    # corr diff
+                    X = outputs
+                    Y = batch_y
+
+                    mean_X = X.mean(dim=1, keepdim=True)     # [B, 1, D]
+                    std_X  = X.std(dim=1, keepdim=True)      # [B, 1, D]
+
+                    mean_Y = Y.mean(dim=1, keepdim=True)
+                    std_Y  = Y.std(dim=1, keepdim=True)
+
+                    X = (X - mean_X) / (std_X + 1e-6)
+                    Y = (Y - mean_Y) / (std_Y + 1e-6)
+
+                    # X: [B, T, D] -> [B, D, T]
+                    X_t = X.transpose(1, 2)
+                    Y_t = Y.transpose(1, 2)
+
+                    Cx = torch.bmm(X_t, X) / T   # [B, D, D]
+                    Cy = torch.bmm(Y_t, Y) / T   # [B, D, D]
+
+                    loss_add = (Cx - Cy).abs().mean()
+                elif self.args.add_loss == "scv":    # spatial cross-variable
+                    # channel diff
+                    if self.args.num_pairs == "max":
+                        num_pairs = max_pairs
+                    elif self.args.num_pairs.isdigit():
+                        num_pairs = min(num_pairs, max_pairs)
+                    else:
+                        raise ValueError("num_pair error")
+
+                    idx_i = torch.randint(0, D, (num_pairs,), device=outputs.device)
+                    idx_j = torch.randint(0, D, (num_pairs,), device=outputs.device)
+
+                    pred_diff = outputs[:,:,idx_i] - outputs[:,:,idx_j]
+                    true_diff = batch_y[:,:,idx_i] - batch_y[:,:,idx_j]
+
+                    loss_add = (pred_diff - true_diff).abs().mean()
+                elif self.args.add_loss == "stcv":   # spatio-temporal cross-variable
+                    # patch loss diff
+
+                    patch_len = self.args.loss_patchlen
+                    stride    = patch_len
+
+                    if (T - patch_len) % stride != 0:
+                        raise ValueError("(T - patch_len) % stride != 0")
+
+                    out_p = outputs.unfold(1, patch_len, stride)   # [B, P, D, L]
+                    y_p   = batch_y.unfold(1, patch_len, stride)
+
+                    out_p = out_p.permute(0, 1, 3, 2).contiguous()  # [B, P, L, D]
+                    y_p   = y_p.permute(0, 1, 3, 2).contiguous()
+
+                    B, P, L, D = out_p.shape
+
+                    out_nodes = out_p.permute(0,1,3,2).reshape(B, P*D, L)
+                    y_nodes   = y_p.permute(0,1,3,2).reshape(B, P*D, L)
+
+                    N = P * D
+
+                    max_pairs = N * (N - 1) // 2
+                    if self.args.num_pairs == "max":
+                        num_pairs = max_pairs
+                    elif self.args.num_pairs.isdigit():
+                        num_pairs = min(num_pairs, max_pairs)
+                    else:
+                        raise ValueError("num_pair error")
+
+                    idx_i = torch.randint(0, N, (num_pairs,), device=device)
+                    idx_j = torch.randint(0, N, (num_pairs,), device=device)
+
+                    # 禁止同变量patch间交互
+                    patch_i = idx_i // D
+                    patch_j = idx_j // D
+
+                    var_i = idx_i % D
+                    var_j = idx_j % D
+
+                    mask = ~((var_i == var_j) & (patch_i != patch_j))
+
+                    mask = mask & (idx_i != idx_j)
+                    # 禁止同变量patch间交互
+
+                    # 取消相同时间 patch 的交互
+                    mask = mask & (patch_i != patch_j)
+                    # 取消相同时间 patch 的交互
+
+                    idx_i = idx_i[mask]
+                    idx_j = idx_j[mask]
+
+                    pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
+                    true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
+
+                    loss_add = (pred_diff - true_diff).abs().mean()
+                elif self.args.add_loss == "fcv":    # full cross-variable
+                    # patch loss diff
+
+                    patch_len = self.args.loss_patchlen
+                    stride    = patch_len
+
+                    if (T - patch_len) % stride != 0:
+                        raise ValueError("(T - patch_len) % stride != 0")
+
+                    out_p = outputs.unfold(1, patch_len, stride)   # [B, P, D, L]
+                    y_p   = batch_y.unfold(1, patch_len, stride)
+
+                    out_p = out_p.permute(0, 1, 3, 2).contiguous()  # [B, P, L, D]
+                    y_p   = y_p.permute(0, 1, 3, 2).contiguous()
+
+                    B, P, L, D = out_p.shape
+
+                    out_nodes = out_p.permute(0,1,3,2).reshape(B, P*D, L)
+                    y_nodes   = y_p.permute(0,1,3,2).reshape(B, P*D, L)
+
+                    N = P * D
+
+                    max_pairs = N * (N - 1) // 2
+                    if self.args.num_pairs == "max":
+                        num_pairs = max_pairs
+                    elif self.args.num_pairs.isdigit():
+                        num_pairs = min(num_pairs, max_pairs)
+                    else:
+                        raise ValueError("num_pair error")
+
+                    idx_i = torch.randint(0, N, (num_pairs,), device=device)
+                    idx_j = torch.randint(0, N, (num_pairs,), device=device)
+                    
+                    # 禁止同变量patch间交互
+                    patch_i = idx_i // D
+                    patch_j = idx_j // D
+
+                    var_i = idx_i % D
+                    var_j = idx_j % D
+
+                    mask = ~((var_i == var_j) & (patch_i != patch_j))
+
+                    mask = mask & (idx_i != idx_j)
+
+                    idx_i = idx_i[mask]
+                    idx_j = idx_j[mask]
+                    
+                    # 禁止同变量patch间交互
+
+                    pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
+                    true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
+
+                    loss_add = (pred_diff - true_diff).abs().mean()
+
+                if self.args.add_loss == "None":
+                    loss = loss_tmp
+                else:
+                    loss = self.args.alpha_add_loss * loss_tmp + self.args.beta_add_loss * loss_add
+                ##################### add #####################
+
+                train_loss.append(loss.item())
 
                 if (i + 1) % 100 == 0:
                     print("\titers: {0}, epoch: {1} | loss: {2:.7f}".format(i + 1, epoch + 1, loss.item()))
