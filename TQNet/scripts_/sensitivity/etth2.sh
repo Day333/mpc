@@ -3,8 +3,8 @@ set -e
 
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
-MAX_JOBS=4
-AVAILABLE_GPUS=(5 6)
+MAX_JOBS=6
+AVAILABLE_GPUS=(1 2 3 4 5 6)
 MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
@@ -109,7 +109,7 @@ PY
           --batch_size 256 \
           --learning_rate 0.001 \
           --random_seed ${random_seed} \
-          --add_loss fcv \
+          --add_loss scv \
           --loss_patchlen ${patchlen} \
           --alpha_add_loss ${alpha} \
           --beta_add_loss ${beta}"

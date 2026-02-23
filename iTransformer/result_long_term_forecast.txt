@@ -1285,3 +1285,30 @@ mse:0.28008386492729187, mae:0.2951764762401581
 long_term_forecast_weather_96_336_fcv_patch2_b0.002_iTransformer_custom_addlossfcv_numpairsmax_patchlen2_alpha0.998_beta0.002  
 mse:0.2810412347316742, mae:0.29851141571998596
 
+long_term_forecast_weather_96_720_fcv_patch2_b0_iTransformer_custom_addlossfcv_numpairsmax_patchlen2_alpha1.0_beta0.0  
+mse:0.35845664143562317, mae:0.3493560254573822
+
+long_term_forecast_weather_96_720_fcv_patch2_b0.002_iTransformer_custom_addlossfcv_numpairsmax_patchlen2_alpha0.998_beta0.002  
+mse:0.3594296872615814, mae:0.3505661189556122
+
+long_term_forecast_weather_96_720_fcv_patch2_b0.005_iTransformer_custom_addlossfcv_numpairsmax_patchlen2_alpha0.995_beta0.005  
+mse:0.359490305185318, mae:0.35072487592697144
+
+long_term_forecast_weather_96_720_fcv_patch2_b0.001_iTransformer_custom_addlossfcv_numpairsmax_patchlen2_alpha0.999_beta0.001  
+mse:0.3592236638069153, mae:0.3503153920173645
+
+long_term_forecast_weather_96_720_fcv_patch2_b0.01_iTransformer_custom_addlossfcv_numpairsmax_patchlen2_alpha0.99_beta0.01  
+mse:0.3594905734062195, mae:0.3507053554058075
+
+long_term_forecast_ECL_96_96_fcv_patch16_b0_iTransformer_custom_addlossscv_numpairsmax_patchlen16_alpha1.0_beta0.0  
+mse:0.1476331204175949, mae:0.23934243619441986
+
+long_term_forecast_ECL_96_96_fcv_patch16_b0.001_iTransformer_custom_addlossscv_numpairsmax_patchlen16_alpha0.999_beta0.001  
+mse:0.14760459959506989, mae:0.23928438127040863
+
+long_term_forecast_ECL_96_96_fcv_patch16_b0.002_iTransformer_custom_addlossscv_numpairsmax_patchlen16_alpha0.998_beta0.002  
+mse:0.14758731424808502, mae:0.23928427696228027
+
+long_term_forecast_ECL_96_96_fcv_patch16_b0.005_iTransformer_custom_addlossscv_numpairsmax_patchlen16_alpha0.995_beta0.005  
+mse:0.14764808118343353, mae:0.2393120974302292
+

@@ -225,10 +225,11 @@ class Exp_Main(Exp_Basic):
                     loss_add = (Cx - Cy).abs().mean()
                 elif self.args.add_loss == "scv":    # spatial cross-variable
                     # channel diff
+                    max_pairs = D * (D - 1) // 2
                     if self.args.num_pairs == "max":
                         num_pairs = max_pairs
                     elif self.args.num_pairs.isdigit():
-                        num_pairs = min(num_pairs, max_pairs)
+                        num_pairs = min(int(self.args.num_pairs), max_pairs)
                     else:
                         raise ValueError("num_pair error")
 
@@ -265,7 +266,7 @@ class Exp_Main(Exp_Basic):
                     if self.args.num_pairs == "max":
                         num_pairs = max_pairs
                     elif self.args.num_pairs.isdigit():
-                        num_pairs = min(num_pairs, max_pairs)
+                        num_pairs = min(int(self.args.num_pairs), max_pairs)
                     else:
                         raise ValueError("num_pair error")
 
@@ -321,7 +322,7 @@ class Exp_Main(Exp_Basic):
                     if self.args.num_pairs == "max":
                         num_pairs = max_pairs
                     elif self.args.num_pairs.isdigit():
-                        num_pairs = min(num_pairs, max_pairs)
+                        num_pairs = min(int(self.args.num_pairs), max_pairs)
                     else:
                         raise ValueError("num_pair error")
 
