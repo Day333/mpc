@@ -20,3 +20,5 @@ TQNet/test_results/
 TQNet/results/
 TQNet/logs/
 TQNet/checkpoints
+TimeBridge/dataset
+TimeBridge/checkpoints

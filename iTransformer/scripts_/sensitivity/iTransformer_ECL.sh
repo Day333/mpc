@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-MAX_JOBS=2
-AVAILABLE_GPUS=(5 6)
+MAX_JOBS=1
+AVAILABLE_GPUS=(0)
 MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}

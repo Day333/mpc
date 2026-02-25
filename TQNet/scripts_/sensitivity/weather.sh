@@ -3,17 +3,24 @@ set -e
 
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
+############################################
+# Parallel config
+############################################
 MAX_JOBS=6
 AVAILABLE_GPUS=(1 2 3 4 5 6)
 MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
-SEMAPHORE=/tmp/gs_semaphore_tqnet
+SEMAPHORE=/tmp/gs_semaphore_weather_tqnet
 mkfifo $SEMAPHORE
 exec 9<>$SEMAPHORE
 rm $SEMAPHORE
 for ((i=0;i<${MAX_JOBS};i++)); do echo >&9; done
+
+############################################
+# Functions
+############################################
 
 run_job() {
   local gpu_id=$1
@@ -24,7 +31,9 @@ run_job() {
 
   while (( attempt <= MAX_RETRIES )); do
     echo "▶ [GPU $gpu_id][Try $((attempt+1))] $model_id"
-    CUDA_VISIBLE_DEVICES=$gpu_id $cmd > "$log_file" 2>&1
+
+    echo "===== Attempt $((attempt+1)) =====" >> "$log_file"
+    CUDA_VISIBLE_DEVICES=$gpu_id $cmd >> "$log_file" 2>&1
 
     if [ $? -eq 0 ]; then
       echo "✅ [GPU $gpu_id] Success: $model_id"
@@ -33,7 +42,7 @@ run_job() {
       echo "❌ [GPU $gpu_id] Failed: $model_id (Attempt $((attempt+1)))"
       attempt=$((attempt + 1))
       if (( attempt > MAX_RETRIES )); then
-        echo "$cmd" >> failures_tqnet.txt
+        echo "$cmd" >> failures_weather_tqnet.txt
       fi
     fi
   done
@@ -46,28 +55,38 @@ is_finished() {
   grep -Eq 'mse:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?,[[:space:]]*mae:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?' "$log_file"
 }
 
+############################################
+# Experiment config
+############################################
+
 model_name=TQNet
-root_path=./dataset/
-data_path=ETTh2.csv
-data_name=ETTh2
-model_id_name=ETTh2
+root_path_name=./dataset/
+data_path_name=weather.csv
+model_id_name=weather
+data_name=custom
 
 seq_len=96
-enc_in=7
+enc_in=21
 random_seed=2024
 
 pred_lens=(96 192 336 720)
 patchlens=(2 4 8 16 24)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
-job_idx=0
 mkdir -p logs
+: > failures_weather_tqnet.txt
+
+job_idx=0
+
+############################################
+# Main loop
+############################################
 
 for pred_len in "${pred_lens[@]}"; do
   for patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
 
-      read -u9  
+      read -u9
 
       alpha=$(python - <<PY
 b=float("${beta}")
@@ -92,8 +111,8 @@ PY
       {
         cmd="python -u run.py \
           --is_training 1 \
-          --root_path ${root_path} \
-          --data_path ${data_path} \
+          --root_path ${root_path_name} \
+          --data_path ${data_path_name} \
           --model_id ${model_id} \
           --model ${model_name} \
           --data ${data_name} \
@@ -101,12 +120,12 @@ PY
           --seq_len ${seq_len} \
           --pred_len ${pred_len} \
           --enc_in ${enc_in} \
-          --cycle 24 \
+          --cycle 144 \
           --train_epochs 30 \
           --patience 5 \
           --dropout 0.5 \
           --itr 1 \
-          --batch_size 256 \
+          --batch_size 64 \
           --learning_rate 0.001 \
           --random_seed ${random_seed} \
           --add_loss fcv \
@@ -123,4 +142,4 @@ PY
 done
 
 wait
-echo "All jobs finished."
+echo "All weather TQNet add_loss jobs finished."

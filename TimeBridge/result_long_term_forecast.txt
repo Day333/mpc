@@ -1,0 +1,9 @@
+long_term_forecast_ETTh1_720_96_TimeBridge_ETTh1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.3662113845348358, mse:0.4037661552429199, rmse:0.6051540374755859, mape:0.6818580627441406, mspe:36127.796875
+
+long_term_forecast_ETTh1_720_192_TimeBridge_ETTh1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.4238036572933197, mse:0.44204235076904297, rmse:0.651002049446106, mape:0.7222675681114197, mspe:39705.58984375
+
+long_term_forecast_ETTh1_720_336_TimeBridge_ETTh1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.43085557222366333, mse:0.44806164503097534, rmse:0.6563959121704102, mape:0.7287324666976929, mspe:44358.08203125
+

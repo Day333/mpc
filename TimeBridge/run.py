@@ -83,6 +83,14 @@ if __name__ == '__main__':
 
     parser.add_argument('--inverse', action='store_true', help='inverse output data', default=False)
 
+    ################################### add #####################################
+    parser.add_argument('--add_loss', type=str, default='None', help='Dependency-Aware Loss')
+    parser.add_argument('--num_pairs', type=str, default='max', help='num_pairs')
+    parser.add_argument('--loss_patchlen', type=int, default=16, help='loss_patchlen')
+    parser.add_argument('--alpha_add_loss', type=float, default=1.0, help='alpha')
+    parser.add_argument('--beta_add_loss', type=float, default=0.1, help='beta')
+    ################################### add #####################################
+
     args = parser.parse_args()
     args.use_gpu = True if torch.cuda.is_available() and args.use_gpu else False
 
@@ -100,23 +108,16 @@ if __name__ == '__main__':
     if args.is_training:
         for ii in range(args.itr):
             # setting record of experiments
-            setting = '{}_{}_{}_bs{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_ial{}_pdl{}_cal{}_df{}_eb{}_{}_{}'.format(
+            setting = 'long_term_forecast_{}_{}_{}_addloss{}_numpairs{}_patchlen{}_alpha{}_beta{}'.format(
                 args.model_id,
                 args.model,
                 args.data,
-                args.batch_size,
-                args.features,
-                args.seq_len,
-                args.label_len,
-                args.pred_len,
-                args.d_model,
-                args.n_heads,
-                args.ia_layers,
-                args.pd_layers,
-                args.ca_layers,
-                args.d_ff,
-                args.embed,
-                args.des, ii)
+                args.add_loss,
+                args.num_pairs,
+                args.loss_patchlen,
+                args.alpha_add_loss,
+                args.beta_add_loss
+                )
 
             exp = Exp(args)  # set experiments
             print('>>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>'.format(setting))
@@ -127,23 +128,16 @@ if __name__ == '__main__':
             torch.cuda.empty_cache()
     else:
         ii = 0
-        setting = '{}_{}_{}_bs{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_ial{}_pdl{}_cal{}_df{}_eb{}_{}_{}'.format(
-            args.model_id,
-            args.model,
-            args.data,
-            args.batch_size,
-            args.features,
-            args.seq_len,
-            args.label_len,
-            args.pred_len,
-            args.d_model,
-            args.n_heads,
-            args.ia_layers,
-            args.pd_layers,
-            args.ca_layers,
-            args.d_ff,
-            args.embed,
-            args.des, ii)
+        setting = 'long_term_forecast_{}_{}_{}_addloss{}_numpairs{}_patchlen{}_alpha{}_beta{}'.format(
+                args.model_id,
+                args.model,
+                args.data,
+                args.add_loss,
+                args.num_pairs,
+                args.loss_patchlen,
+                args.alpha_add_loss,
+                args.beta_add_loss
+                )
 
         exp = Exp(args)  # set experiments
         print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))

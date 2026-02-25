@@ -345,10 +345,26 @@ class Exp_Main(Exp_Basic):
                     
                     # 禁止同变量patch间交互
 
-                    pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
-                    true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
+                    # pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
+                    # true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
 
-                    loss_add = (pred_diff - true_diff).abs().mean()
+                    # loss_add = (pred_diff - true_diff).abs().mean()
+
+                    # === 最小改动：加入分块 (Chunking) 逻辑 ===
+                    chunk_size = 4096
+                    num_valid_pairs = len(idx_i)
+
+                    if num_valid_pairs == 0:
+                        loss_add = out_nodes.new_tensor(0., requires_grad=True)
+                    else:
+                        loss_add = 0.
+                        for start in range(0, num_valid_pairs, chunk_size):
+                            sl = slice(start, start + chunk_size)
+                            pred_diff = out_nodes[:, idx_i[sl]] - out_nodes[:, idx_j[sl]]
+                            true_diff = y_nodes[:, idx_i[sl]]   - y_nodes[:, idx_j[sl]]
+                            loss_add += (pred_diff - true_diff).abs().sum()
+
+                        loss_add /= (B * num_valid_pairs * L)
 
                 if self.args.add_loss == "None":
                     loss = loss_tmp

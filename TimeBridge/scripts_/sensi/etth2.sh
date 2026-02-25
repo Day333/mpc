@@ -9,7 +9,7 @@ MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
-SEMAPHORE=/tmp/gs_semaphore_tqnet
+SEMAPHORE=/tmp/gs_semaphore_timebridge
 mkfifo $SEMAPHORE
 exec 9<>$SEMAPHORE
 rm $SEMAPHORE
@@ -24,7 +24,9 @@ run_job() {
 
   while (( attempt <= MAX_RETRIES )); do
     echo "▶ [GPU $gpu_id][Try $((attempt+1))] $model_id"
-    CUDA_VISIBLE_DEVICES=$gpu_id $cmd > "$log_file" 2>&1
+
+    echo "===== Attempt $((attempt+1)) =====" >> "$log_file"
+    CUDA_VISIBLE_DEVICES=$gpu_id $cmd >> "$log_file" 2>&1
 
     if [ $? -eq 0 ]; then
       echo "✅ [GPU $gpu_id] Success: $model_id"
@@ -33,7 +35,7 @@ run_job() {
       echo "❌ [GPU $gpu_id] Failed: $model_id (Attempt $((attempt+1)))"
       attempt=$((attempt + 1))
       if (( attempt > MAX_RETRIES )); then
-        echo "$cmd" >> failures_tqnet.txt
+        echo "$cmd" >> failures_timebridge.txt
       fi
     fi
   done
@@ -46,37 +48,35 @@ is_finished() {
   grep -Eq 'mse:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?,[[:space:]]*mae:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?' "$log_file"
 }
 
-model_name=TQNet
-root_path=./dataset/
-data_path=ETTh2.csv
+model_name=TimeBridge
+seq_len=720
+root=./dataset
 data_name=ETTh2
-model_id_name=ETTh2
-
-seq_len=96
-enc_in=7
-random_seed=2024
+alpha=0.35
 
 pred_lens=(96 192 336 720)
 patchlens=(2 4 8 16 24)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
-job_idx=0
 mkdir -p logs
+: > failures_timebridge.txt
+
+job_idx=0
 
 for pred_len in "${pred_lens[@]}"; do
   for patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
 
-      read -u9  
+      read -u9
 
-      alpha=$(python - <<PY
+      alpha_add=$(python - <<PY
 b=float("${beta}")
 a=1.0-b
 print(f"{a:.6f}".rstrip('0').rstrip('.'))
 PY
 )
 
-      model_id="${model_id_name}_${seq_len}_${pred_len}_fcv_patch${patchlen}_b${beta}"
+      model_id="${data_name}_${seq_len}_${pred_len}_fcv_patch${patchlen}_b${beta}"
       log_file="logs/${model_id}.log"
 
       if [ -f "$log_file" ] && is_finished "$log_file"; then
@@ -92,30 +92,38 @@ PY
       {
         cmd="python -u run.py \
           --is_training 1 \
-          --root_path ${root_path} \
-          --data_path ${data_path} \
+          --root_path ${root}/ETT-small/ \
+          --data_path ${data_name}.csv \
           --model_id ${model_id} \
           --model ${model_name} \
           --data ${data_name} \
           --features M \
           --seq_len ${seq_len} \
+          --label_len 48 \
           --pred_len ${pred_len} \
-          --enc_in ${enc_in} \
-          --cycle 24 \
-          --train_epochs 30 \
-          --patience 5 \
-          --dropout 0.5 \
+          --enc_in 7 \
+          --period 48 \
+          --ca_layers 0 \
+          --pd_layers 1 \
+          --ia_layers 3 \
+          --ca_layers 0 \
+          --des 'Exp' \
+          --n_heads 4 \
+          --period 48 \
+          --d_model 128 \
+          --d_ff 128 \
+          --train_epochs 100 \
+          --learning_rate 0.0001 \
+          --patience 15 \
+          --alpha ${alpha} \
+          --batch_size 16 \
           --itr 1 \
-          --batch_size 256 \
-          --learning_rate 0.001 \
-          --random_seed ${random_seed} \
           --add_loss fcv \
           --loss_patchlen ${patchlen} \
-          --alpha_add_loss ${alpha} \
+          --alpha_add_loss ${alpha_add} \
           --beta_add_loss ${beta}"
 
         run_job $gpu_id "$cmd" "$log_file" "$model_id"
-
       } &
 
     done
@@ -123,4 +131,4 @@ PY
 done
 
 wait
-echo "All jobs finished."
+echo "All TimeBridge ETTh2 add_loss jobs finished."
