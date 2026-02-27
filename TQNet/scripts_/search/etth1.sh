@@ -73,7 +73,7 @@ seq_len=96
 enc_in=7
 random_seed=2024
 
-patchlens=(2 4 8 16 24)
+patchlens=(24 12 6 3)
 betas=(0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)
 
 mkdir -p logs

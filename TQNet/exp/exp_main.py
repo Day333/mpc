@@ -299,7 +299,8 @@ class Exp_Main(Exp_Basic):
                 elif self.args.add_loss == "fcv":    # full cross-variable
                     # patch loss diff
 
-                    patch_len = self.args.loss_patchlen
+                    # patch_len = self.args.loss_patchlen
+                    patch_len = self.args.pred_len // self.args.loss_patchlen
                     stride    = patch_len
 
                     if (T - patch_len) % stride != 0:
@@ -339,6 +340,7 @@ class Exp_Main(Exp_Basic):
                     mask = ~((var_i == var_j) & (patch_i != patch_j))
 
                     mask = mask & (idx_i != idx_j)
+                    mask = mask & (idx_i < idx_j)
 
                     idx_i = idx_i[mask]
                     idx_j = idx_j[mask]
