@@ -3154,3 +3154,15 @@ mse:0.26202118396759033, mae:0.3302970826625824
 long_term_forecast_PEMS08_96_96_fcv_patch3_b1.0_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.0_beta1.0  
 mse:0.7238911986351013, mae:0.6763070225715637
 
+long_term_forecast_Solar_96_720_fcv_patch12_b0.1_TQNet_Solar_addlossfcv_numpairsmax_patchlen12_alpha0.9_beta0.1  
+mse:0.2067767083644867, mae:0.2642573416233063
+
+long_term_forecast_Solar_96_720_fcv_patch12_b0.3_TQNet_Solar_addlossfcv_numpairsmax_patchlen12_alpha0.7_beta0.3  
+mse:0.2059975117444992, mae:0.2570233941078186
+
+long_term_forecast_Solar_96_720_fcv_patch12_b0.2_TQNet_Solar_addlossfcv_numpairsmax_patchlen12_alpha0.8_beta0.2  
+mse:0.20656105875968933, mae:0.2620830833911896
+
+long_term_forecast_Solar_96_720_fcv_patch12_b0.4_TQNet_Solar_addlossfcv_numpairsmax_patchlen12_alpha0.6_beta0.4  
+mse:0.20411372184753418, mae:0.2522488236427307
+
