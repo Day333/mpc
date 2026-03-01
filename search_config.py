@@ -3,7 +3,7 @@ import argparse
 import pandas as pd
 
 
-VALID_PATCH = {2, 4, 8, 16, 24}
+VALID_PATCH = {3, 6, 12, 24, 48}
 EXPECTED_PREDS = [96, 192, 336, 720]
 
 
@@ -210,7 +210,7 @@ def main():
     parser.add_argument(
         "--wide_mode",
         type=str,
-        default="avg",
+        default="full",
         choices=["full", "avg"],
         help="Wide table output: 'full' prints per-pred columns; 'avg' prints only avg_mse/avg_mae/coverage.",
     )

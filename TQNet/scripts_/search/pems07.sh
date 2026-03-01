@@ -1,29 +1,28 @@
 #!/usr/bin/env bash
 set -e
 
-############################################
+########################################
 # CONFIG
-############################################
+########################################
 
-MAX_JOBS=4
-AVAILABLE_GPUS=(0 1 2 3)     # <<< set your real GPUs
+MAX_JOBS=7
+AVAILABLE_GPUS=(0 1 2 3 4 5 6)   # <<< set your real GPUs here
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
-############################################
+########################################
 # SEMAPHORE
-############################################
+########################################
 
-SEMAPHORE=/tmp/gs_semaphore_tqnet_pems03
+SEMAPHORE=/tmp/gs_semaphore_tqnet_pems07
 mkfifo $SEMAPHORE
 exec 9<>$SEMAPHORE
 rm $SEMAPHORE
-
 for ((i=0;i<${MAX_JOBS};i++)); do echo >&9; done
 
-############################################
+########################################
 # FUNCTIONS
-############################################
+########################################
 
 run_job() {
   local gpu_id=$1
@@ -56,19 +55,19 @@ is_finished() {
   grep -Eq 'mse:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?,[[:space:]]*mae:[[:space:]]*[0-9]+(\.[0-9]+)?([eE][-+]?[0-9]+)?' "$log_file"
 }
 
-############################################
+########################################
 # EXPERIMENT SETTINGS
-############################################
+########################################
 
 model_name=TQNet
 
 root_path_name=./dataset/
-data_path_name=PEMS03.npz
-model_id_name=PEMS03
+data_path_name=PEMS07.npz
+model_id_name=PEMS07
 data_name=PEMS
 
 seq_len=96
-enc_in=358
+enc_in=883
 random_seed=2024
 
 patchlens=(12 6 3)
@@ -79,9 +78,9 @@ mkdir -p logs
 
 gpu_ptr=0
 
-############################################
+########################################
 # MAIN LOOP
-############################################
+########################################
 
 for pred_len in 12 24 48
 do
@@ -101,9 +100,9 @@ PY
       log_file="logs/${model_id}.log"
 
       if [ -f "$log_file" ] && is_finished "$log_file"; then
-          echo "⏭ Skip: $model_id"
-          echo >&9
-          continue
+        echo "⏭ Skip: $model_id"
+        echo >&9
+        continue
       fi
 
       gpu_id=${AVAILABLE_GPUS[$gpu_ptr]}
@@ -140,4 +139,4 @@ PY
 done
 
 wait
-echo "All TQNet PEMS03 fcv search jobs finished."
+echo "All TQNet PEMS07 fcv search jobs finished."
