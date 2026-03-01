@@ -3,8 +3,8 @@ set -e
 
 export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
-MAX_JOBS=6
-AVAILABLE_GPUS=(1 2 3 4 5 6)
+MAX_JOBS=2
+AVAILABLE_GPUS=(0 1)
 MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
@@ -56,8 +56,8 @@ seq_len=96
 enc_in=7
 random_seed=2024
 
-pred_lens=(96 192 336 720)
-patchlens=(2 4 8 16 24)
+pred_lens=(720 336 192 96)
+patchlens=(6)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
 job_idx=0

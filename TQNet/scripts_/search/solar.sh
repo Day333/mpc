@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ########################################
 
-MAX_JOBS=7
-AVAILABLE_GPUS=(0 1 2 3 4 5 6)
+MAX_JOBS=4
+AVAILABLE_GPUS=(0 1 2 3)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
@@ -14,7 +14,7 @@ NUM_GPUS=${#AVAILABLE_GPUS[@]}
 # SEMAPHORE
 ########################################
 
-SEMAPHORE=/tmp/gs_semaphore_tqnet_pems08
+SEMAPHORE=/tmp/gs_semaphore_tqnet_solar
 mkfifo $SEMAPHORE
 exec 9<>$SEMAPHORE
 rm $SEMAPHORE
@@ -62,12 +62,12 @@ is_finished() {
 model_name=TQNet
 
 root_path_name=./dataset/
-data_path_name=PEMS08.npz
-model_id_name=PEMS08
-data_name=PEMS
+data_path_name=solar_AL.txt
+model_id_name=Solar
+data_name=Solar
 
 seq_len=96
-enc_in=170
+enc_in=137
 random_seed=2024
 
 patchlens=(12 6 3)
@@ -82,7 +82,7 @@ gpu_ptr=0
 # MAIN LOOP
 ########################################
 
-for pred_len in 12 24 48
+for pred_len in 720 96 192 336
 do
   for loss_patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
@@ -119,12 +119,12 @@ PY
         --seq_len ${seq_len} \
         --pred_len ${pred_len} \
         --enc_in ${enc_in} \
-        --cycle 288 \
+        --cycle 144 \
         --train_epochs 30 \
-        --use_revin 1 \
         --patience 5 \
+        --use_revin 0 \
         --itr 1 \
-        --batch_size 32 \
+        --batch_size 64 \
         --learning_rate 0.003 \
         --random_seed ${random_seed} \
         --add_loss fcv \
@@ -139,4 +139,4 @@ PY
 done
 
 wait
-echo "All TQNet PEMS08 fcv search jobs finished."
+echo "All TQNet Solar fcv search jobs finished."

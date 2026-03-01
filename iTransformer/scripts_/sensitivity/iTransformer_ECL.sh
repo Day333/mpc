@@ -2,7 +2,7 @@
 set -e
 
 MAX_JOBS=1
-AVAILABLE_GPUS=(0)
+AVAILABLE_GPUS=(1)
 MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
@@ -50,7 +50,7 @@ seq_len=96
 pred_lens=(96 192 336 720)
 
 # patchlens=(2 4 8 16 24)
-patchlens=(16)
+patchlens=(6)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
 root_path=./dataset/electricity/
@@ -108,7 +108,7 @@ PY
           --batch_size 16 \
           --learning_rate 0.0005 \
           --itr 1 \
-          --add_loss scv \
+          --add_loss fcv \
           --loss_patchlen ${patchlen} \
           --alpha_add_loss ${alpha} \
           --beta_add_loss ${beta}"

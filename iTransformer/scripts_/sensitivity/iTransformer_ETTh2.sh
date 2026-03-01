@@ -47,9 +47,9 @@ is_finished() {
 model_name=iTransformer
 
 seq_len=96
-pred_lens=(96 192 336 720)
+pred_lens=(720 336 192 96)
 
-patchlens=(2 4 8 16 24)
+patchlens=(6)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
 root_path=./dataset/ETT-small/

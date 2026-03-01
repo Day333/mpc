@@ -3028,3 +3028,129 @@ mse:0.14533859491348267, mae:0.2409316450357437
 long_term_forecast_PEMS08_96_48_fcv_patch6_b0.8_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.2_beta0.8  
 mse:0.14783449470996857, mae:0.24526852369308472
 
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.1_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.9_beta0.1  
+mse:0.1487307846546173, mae:0.24317821860313416
+
+long_term_forecast_PEMS08_96_48_fcv_patch6_b0.9_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.1_beta0.9  
+mse:0.15892817080020905, mae:0.26487433910369873
+
+long_term_forecast_PEMS08_96_48_fcv_patch6_b1.0_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.32799291610717773, mae:0.44818419218063354
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.3_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.7_beta0.3  
+mse:0.14694496989250183, mae:0.23956264555454254
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.2_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.8_beta0.2  
+mse:0.14849229156970978, mae:0.24131692945957184
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.4_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.6_beta0.4  
+mse:0.14297153055667877, mae:0.23733749985694885
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.5_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.5_beta0.5  
+mse:0.14530688524246216, mae:0.23929323256015778
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.6_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.14325638115406036, mae:0.23760609328746796
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.7_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.3_beta0.7  
+mse:0.14378948509693146, mae:0.2401450276374817
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.9_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.1_beta0.9  
+mse:0.15790830552577972, mae:0.26311543583869934
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b0.8_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.2_beta0.8  
+mse:0.14805728197097778, mae:0.24602428078651428
+
+long_term_forecast_PEMS08_96_48_fcv_patch3_b1.0_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.0_beta1.0  
+mse:0.3385215103626251, mae:0.45473742485046387
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.1_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.9_beta0.1  
+mse:0.2589293420314789, mae:0.3067288100719452
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.2_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.8_beta0.2  
+mse:0.26376375555992126, mae:0.30590951442718506
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.3_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.7_beta0.3  
+mse:0.25306054949760437, mae:0.3009542226791382
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.4_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.6_beta0.4  
+mse:0.25114157795906067, mae:0.29938727617263794
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.7_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.3_beta0.7  
+mse:0.24568049609661102, mae:0.29839199781417847
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.6_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.4_beta0.6  
+mse:0.24079447984695435, mae:0.2954215407371521
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.5_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.5_beta0.5  
+mse:0.24704235792160034, mae:0.29690971970558167
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.4_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.6_beta0.4  
+mse:0.25399208068847656, mae:0.3015608489513397
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.2_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.26562902331352234, mae:0.3057308793067932
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.1_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.26222583651542664, mae:0.3071756064891815
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.9_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.1_beta0.9  
+mse:0.263782262802124, mae:0.32943451404571533
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.3_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.7_beta0.3  
+mse:0.26074567437171936, mae:0.3037067949771881
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b0.8_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.2_beta0.8  
+mse:0.24948753416538239, mae:0.30598896741867065
+
+long_term_forecast_PEMS08_96_96_fcv_patch12_b1.0_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.0_beta1.0  
+mse:0.7066484689712524, mae:0.6724529266357422
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.9_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.1_beta0.9  
+mse:0.2641805112361908, mae:0.330025315284729
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.6_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.2483319193124771, mae:0.29719945788383484
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.5_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.24636106193065643, mae:0.2987715005874634
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.7_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.3_beta0.7  
+mse:0.24482063949108124, mae:0.29833662509918213
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b0.8_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.2_beta0.8  
+mse:0.24726971983909607, mae:0.3021705150604248
+
+long_term_forecast_PEMS08_96_96_fcv_patch6_b1.0_TQNet_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.6961608529090881, mae:0.6654198169708252
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.2_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.8_beta0.2  
+mse:0.2719545066356659, mae:0.31464362144470215
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.1_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.9_beta0.1  
+mse:0.26383426785469055, mae:0.30883386731147766
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.4_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.6_beta0.4  
+mse:0.2529614269733429, mae:0.30135130882263184
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.3_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.7_beta0.3  
+mse:0.2551758885383606, mae:0.30167898535728455
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.5_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.5_beta0.5  
+mse:0.2499212771654129, mae:0.29842185974121094
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.6_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.24419711530208588, mae:0.2950349748134613
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.7_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.3_beta0.7  
+mse:0.2410779595375061, mae:0.2979547381401062
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.8_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.2_beta0.8  
+mse:0.2511557638645172, mae:0.30221670866012573
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b0.9_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.1_beta0.9  
+mse:0.26202118396759033, mae:0.3302970826625824
+
+long_term_forecast_PEMS08_96_96_fcv_patch3_b1.0_TQNet_PEMS_addlossfcv_numpairsmax_patchlen3_alpha0.0_beta1.0  
+mse:0.7238911986351013, mae:0.6763070225715637
+

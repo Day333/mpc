@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -e
 
-MAX_JOBS=4
-AVAILABLE_GPUS=(1 2 3 4)
+MAX_JOBS=2
+AVAILABLE_GPUS=(0 1)
 MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
@@ -46,8 +46,8 @@ is_finished() {
 
 model_name=iTransformer
 seq_len=96
-pred_lens=(96 192 336 720)
-patchlens=(2 4 8 16 24)
+pred_lens=(720 96 336 192)
+patchlens=(6)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
 root_path=./dataset/weather/

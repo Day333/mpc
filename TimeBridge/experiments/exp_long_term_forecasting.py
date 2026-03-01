@@ -248,7 +248,8 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                 elif self.args.add_loss == "fcv":    # full cross-variable
                     # patch loss diff
 
-                    patch_len = self.args.loss_patchlen
+                    # patch_len = self.args.loss_patchlen
+                    patch_len = self.args.pred_len // self.args.loss_patchlen
                     stride    = patch_len
 
                     if (T - patch_len) % stride != 0:
@@ -288,6 +289,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                     mask = ~((var_i == var_j) & (patch_i != patch_j))
 
                     mask = mask & (idx_i != idx_j)
+                    mask = mask & (idx_i < idx_j)
 
                     idx_i = idx_i[mask]
                     idx_j = idx_j[mask]
@@ -300,7 +302,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                     # loss_add = (pred_diff - true_diff).abs().mean()
 
                     # === 最小改动：加入分块 (Chunking) 逻辑 ===
-                    chunk_size = 4096
+                    chunk_size = 512
                     num_valid_pairs = len(idx_i)
 
                     if num_valid_pairs == 0:
