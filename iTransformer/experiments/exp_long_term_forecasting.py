@@ -301,8 +301,8 @@ class Exp_Long_Term_Forecast(Exp_Basic):
 
                     # loss_add = (pred_diff - true_diff).abs().mean()
 
-                    # === 最小改动：加入分块 (Chunking) 逻辑 ===
-                    chunk_size = 1024  # 每次处理的配对数量，若显存仍溢出可改小为 2048 或 1024
+                    # === Chunking ===
+                    chunk_size = 1024
                     num_valid_pairs = len(idx_i)
                     loss_add = 0.0
                     
@@ -316,13 +316,10 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                             pred_diff_chunk = out_nodes[:, chunk_i] - out_nodes[:, chunk_j]
                             true_diff_chunk = y_nodes[:, chunk_i]   - y_nodes[:, chunk_j]
                             
-                            # 累加这个 chunk 的绝对误差和 (自动保留梯度)
                             loss_add += (pred_diff_chunk - true_diff_chunk).abs().sum()
                             
-                        # 计算整体 Mean: 总误差和 / (Batch_size * 有效配对数 * 序列长度)
                         loss_add = loss_add / (B * num_valid_pairs * L)
                     else:
-                        # 极端情况下没有符合条件的 pair
                         loss_add = torch.tensor(0.0, device=out_nodes.device, requires_grad=True)
 
                 if self.args.add_loss == "None":

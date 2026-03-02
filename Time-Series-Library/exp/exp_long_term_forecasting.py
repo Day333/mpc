@@ -119,17 +119,180 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                         f_dim = -1 if self.args.features == 'MS' else 0
                         outputs = outputs[:, -self.args.pred_len:, f_dim:]
                         batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-                        loss = criterion(outputs, batch_y)
-                        train_loss.append(loss.item())
+                        # loss = criterion(outputs, batch_y)
+                        # train_loss.append(loss.item())
                 else:
                     outputs = self.model(batch_x, batch_x_mark, dec_inp, batch_y_mark)
 
                     f_dim = -1 if self.args.features == 'MS' else 0
                     outputs = outputs[:, -self.args.pred_len:, f_dim:]
                     batch_y = batch_y[:, -self.args.pred_len:, f_dim:].to(self.device)
-                    loss = criterion(outputs, batch_y)
-                    train_loss.append(loss.item())
+                    # loss = criterion(outputs, batch_y)
+                    # train_loss.append(loss.item())
+                
+                ##################### add #####################
+                loss_tmp = criterion(outputs, batch_y)
+                B, T, D = outputs.shape
+                device = outputs.device
 
+                if self.args.add_loss == "scv":    # spatial cross-variable
+                    # channel diff
+                    max_pairs = D * (D - 1) // 2
+                    if self.args.num_pairs == "max":
+                        num_pairs = max_pairs
+                    elif self.args.num_pairs.isdigit():
+                        num_pairs = min(int(self.args.num_pairs), max_pairs)
+                    else:
+                        raise ValueError("num_pair error")
+
+                    idx_i = torch.randint(0, D, (num_pairs,), device=outputs.device)
+                    idx_j = torch.randint(0, D, (num_pairs,), device=outputs.device)
+
+                    pred_diff = outputs[:,:,idx_i] - outputs[:,:,idx_j]
+                    true_diff = batch_y[:,:,idx_i] - batch_y[:,:,idx_j]
+
+                    loss_add = (pred_diff - true_diff).abs().mean()
+                elif self.args.add_loss == "stcv":   # spatio-temporal cross-variable
+                    # patch loss diff
+
+                    patch_len = self.args.loss_patchlen
+                    stride    = patch_len
+
+                    if (T - patch_len) % stride != 0:
+                        raise ValueError("(T - patch_len) % stride != 0")
+
+                    out_p = outputs.unfold(1, patch_len, stride)   # [B, P, D, L]
+                    y_p   = batch_y.unfold(1, patch_len, stride)
+
+                    out_p = out_p.permute(0, 1, 3, 2).contiguous()  # [B, P, L, D]
+                    y_p   = y_p.permute(0, 1, 3, 2).contiguous()
+
+                    B, P, L, D = out_p.shape
+
+                    out_nodes = out_p.permute(0,1,3,2).reshape(B, P*D, L)
+                    y_nodes   = y_p.permute(0,1,3,2).reshape(B, P*D, L)
+
+                    N = P * D
+
+                    max_pairs = N * (N - 1) // 2
+                    if self.args.num_pairs == "max":
+                        num_pairs = max_pairs
+                    elif self.args.num_pairs.isdigit():
+                        num_pairs = min(int(self.args.num_pairs), max_pairs)
+                    else:
+                        raise ValueError("num_pair error")
+
+                    idx_i = torch.randint(0, N, (num_pairs,), device=device)
+                    idx_j = torch.randint(0, N, (num_pairs,), device=device)
+
+                    # 禁止同变量patch间交互
+                    patch_i = idx_i // D
+                    patch_j = idx_j // D
+
+                    var_i = idx_i % D
+                    var_j = idx_j % D
+
+                    mask = ~((var_i == var_j) & (patch_i != patch_j))
+
+                    mask = mask & (idx_i != idx_j)
+                    # 禁止同变量patch间交互
+
+                    # 取消相同时间 patch 的交互
+                    mask = mask & (patch_i != patch_j)
+                    # 取消相同时间 patch 的交互
+
+                    idx_i = idx_i[mask]
+                    idx_j = idx_j[mask]
+
+                    pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
+                    true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
+
+                    loss_add = (pred_diff - true_diff).abs().mean()
+                elif self.args.add_loss == "fcv":    # full cross-variable
+                    # patch loss diff
+
+                    # patch_len = self.args.loss_patchlen
+                    patch_len = self.args.pred_len // self.args.loss_patchlen
+                    stride    = patch_len
+
+                    if (T - patch_len) % stride != 0:
+                        raise ValueError("(T - patch_len) % stride != 0")
+
+                    out_p = outputs.unfold(1, patch_len, stride)   # [B, P, D, L]
+                    y_p   = batch_y.unfold(1, patch_len, stride)
+
+                    out_p = out_p.permute(0, 1, 3, 2).contiguous()  # [B, P, L, D]
+                    y_p   = y_p.permute(0, 1, 3, 2).contiguous()
+
+                    B, P, L, D = out_p.shape
+
+                    out_nodes = out_p.permute(0,1,3,2).reshape(B, P*D, L)
+                    y_nodes   = y_p.permute(0,1,3,2).reshape(B, P*D, L)
+
+                    N = P * D
+
+                    max_pairs = N * (N - 1) // 2
+                    if self.args.num_pairs == "max":
+                        num_pairs = max_pairs
+                    elif self.args.num_pairs.isdigit():
+                        num_pairs = min(int(self.args.num_pairs), max_pairs)
+                    else:
+                        raise ValueError("num_pair error")
+
+                    idx_i = torch.randint(0, N, (num_pairs,), device=device)
+                    idx_j = torch.randint(0, N, (num_pairs,), device=device)
+                    
+                    # 禁止同变量patch间交互
+                    patch_i = idx_i // D
+                    patch_j = idx_j // D
+
+                    var_i = idx_i % D
+                    var_j = idx_j % D
+
+                    mask = ~((var_i == var_j) & (patch_i != patch_j))
+
+                    mask = mask & (idx_i != idx_j)
+                    mask = mask & (idx_i < idx_j)
+
+                    idx_i = idx_i[mask]
+                    idx_j = idx_j[mask]
+                    
+                    # 禁止同变量patch间交互
+
+                    # pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
+                    # true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
+
+                    # loss_add = (pred_diff - true_diff).abs().mean()
+
+                    # === Chunking ===
+                    chunk_size = 1024
+                    num_valid_pairs = len(idx_i)
+                    loss_add = 0.0
+                    
+                    if num_valid_pairs > 0:
+                        for start in range(0, num_valid_pairs, chunk_size):
+                            end = min(start + chunk_size, num_valid_pairs)
+                            
+                            chunk_i = idx_i[start:end]
+                            chunk_j = idx_j[start:end]
+                            
+                            pred_diff_chunk = out_nodes[:, chunk_i] - out_nodes[:, chunk_j]
+                            true_diff_chunk = y_nodes[:, chunk_i]   - y_nodes[:, chunk_j]
+                            
+                            loss_add += (pred_diff_chunk - true_diff_chunk).abs().sum()
+                            
+                        loss_add = loss_add / (B * num_valid_pairs * L)
+                    else:
+                        loss_add = torch.tensor(0.0, device=out_nodes.device, requires_grad=True)
+
+                if self.args.add_loss == "None":
+                    loss = loss_tmp
+                else:
+                    loss = self.args.alpha_add_loss * loss_tmp + self.args.beta_add_loss * loss_add
+                ##################### add #####################
+
+                train_loss.append(loss.item())
+                
                 if (i + 1) % 100 == 0:
                     print("\titers: {0}, epoch: {1} | loss: {2:.7f}".format(i + 1, epoch + 1, loss.item()))
                     speed = (time.time() - time_now) / iter_count

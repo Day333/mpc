@@ -151,6 +151,14 @@ if __name__ == '__main__':
     parser.add_argument('--alpha', type=float, default=0.1, help='KNN for Graph Construction')
     parser.add_argument('--top_p', type=float, default=0.5, help='Dynamic Routing in MoE')
     parser.add_argument('--pos', type=int, choices=[0, 1], default=1, help='Positional Embedding. Set pos to 0 or 1')
+    
+    ################################### add #####################################
+    parser.add_argument('--add_loss', type=str, default='None', help='Dependency-Aware Loss')
+    parser.add_argument('--num_pairs', type=str, default='max', help='num_pairs')
+    parser.add_argument('--loss_patchlen', type=int, default=16, help='loss_patchlen')
+    parser.add_argument('--alpha_add_loss', type=float, default=1.0, help='alpha')
+    parser.add_argument('--beta_add_loss', type=float, default=0.1, help='beta')
+    ################################### add #####################################
 
     args = parser.parse_args()
     if torch.cuda.is_available() and args.use_gpu:
@@ -199,26 +207,16 @@ if __name__ == '__main__':
         for ii in range(args.itr):
             # setting record of experiments
             exp = Exp(args)  # set experiments
-            setting = '{}_{}_{}_{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_expand{}_dc{}_fc{}_eb{}_dt{}_{}_{}'.format(
-                args.task_name,
+            setting = 'long_term_forecast_{}_{}_{}_addloss{}_numpairs{}_patchlen{}_alpha{}_beta{}'.format(
                 args.model_id,
                 args.model,
                 args.data,
-                args.features,
-                args.seq_len,
-                args.label_len,
-                args.pred_len,
-                args.d_model,
-                args.n_heads,
-                args.e_layers,
-                args.d_layers,
-                args.d_ff,
-                args.expand,
-                args.d_conv,
-                args.factor,
-                args.embed,
-                args.distil,
-                args.des, ii)
+                args.add_loss,
+                args.num_pairs,
+                args.loss_patchlen,
+                args.alpha_add_loss,
+                args.beta_add_loss
+                )
 
             print('>>>>>>>start training : {}>>>>>>>>>>>>>>>>>>>>>>>>>>'.format(setting))
             exp.train(setting)
@@ -233,26 +231,16 @@ if __name__ == '__main__':
     else:
         exp = Exp(args)  # set experiments
         ii = 0
-        setting = '{}_{}_{}_{}_ft{}_sl{}_ll{}_pl{}_dm{}_nh{}_el{}_dl{}_df{}_expand{}_dc{}_fc{}_eb{}_dt{}_{}_{}'.format(
-            args.task_name,
+        setting = 'long_term_forecast_{}_{}_{}_addloss{}_numpairs{}_patchlen{}_alpha{}_beta{}'.format(
             args.model_id,
             args.model,
             args.data,
-            args.features,
-            args.seq_len,
-            args.label_len,
-            args.pred_len,
-            args.d_model,
-            args.n_heads,
-            args.e_layers,
-            args.d_layers,
-            args.d_ff,
-            args.expand,
-            args.d_conv,
-            args.factor,
-            args.embed,
-            args.distil,
-            args.des, ii)
+            args.add_loss,
+            args.num_pairs,
+            args.loss_patchlen,
+            args.alpha_add_loss,
+            args.beta_add_loss
+            )
 
         print('>>>>>>>testing : {}<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<'.format(setting))
         exp.test(setting, test=1)
