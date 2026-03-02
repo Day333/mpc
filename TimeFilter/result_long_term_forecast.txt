@@ -2062,3 +2062,375 @@ mse:0.39038488268852234, mae:0.39058881998062134
 long_term_forecast_ETTm2_96_720_fcv_patch3_b1.0_TimeFilter_ETTm2_addlossfcv_numpairsmax_patchlen3_alpha0.0_beta1.0  
 mse:0.3968880772590637, mae:0.3907257914543152
 
+long_term_forecast_ETTh1_96_96_fcv_patch24_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.7_beta0.3  
+mse:0.36868318915367126, mae:0.3911185562610626
+
+long_term_forecast_ETTh1_96_96_fcv_patch24_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.6_beta0.4  
+mse:0.368857204914093, mae:0.39041784405708313
+
+long_term_forecast_ETTh1_96_96_fcv_patch24_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.4_beta0.6  
+mse:0.3698233366012573, mae:0.3891832232475281
+
+long_term_forecast_ETTh1_96_96_fcv_patch24_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.2_beta0.8  
+mse:0.3721029758453369, mae:0.388306200504303
+
+long_term_forecast_ETTh1_96_96_fcv_patch24_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.3_beta0.7  
+mse:0.3707369863986969, mae:0.38868191838264465
+
+long_term_forecast_ETTh1_96_96_fcv_patch24_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.1_beta0.9  
+mse:0.37422144412994385, mae:0.3881772458553314
+
+long_term_forecast_ETTh1_96_96_fcv_patch12_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.7_beta0.3  
+mse:0.3687424957752228, mae:0.391224205493927
+
+long_term_forecast_ETTh1_96_96_fcv_patch12_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.6_beta0.4  
+mse:0.36892980337142944, mae:0.3905515968799591
+
+long_term_forecast_ETTh1_96_96_fcv_patch12_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.4_beta0.6  
+mse:0.36994871497154236, mae:0.38939961791038513
+
+long_term_forecast_ETTh1_96_96_fcv_patch12_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.3_beta0.7  
+mse:0.37088996171951294, mae:0.3889392912387848
+
+long_term_forecast_ETTh1_96_96_fcv_patch12_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.2_beta0.8  
+mse:0.3722623884677887, mae:0.3886032700538635
+
+long_term_forecast_ETTh1_96_96_fcv_patch12_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.1_beta0.9  
+mse:0.374370276927948, mae:0.38849514722824097
+
+long_term_forecast_ETTh1_96_96_fcv_patch6_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.7_beta0.3  
+mse:0.3687296211719513, mae:0.3911924660205841
+
+long_term_forecast_ETTh1_96_96_fcv_patch6_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.6_beta0.4  
+mse:0.36893630027770996, mae:0.3905188739299774
+
+long_term_forecast_ETTh1_96_96_fcv_patch6_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.3700125515460968, mae:0.38936805725097656
+
+long_term_forecast_ETTh1_96_96_fcv_patch6_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.3_beta0.7  
+mse:0.3709898889064789, mae:0.38889840245246887
+
+long_term_forecast_ETTh1_96_96_fcv_patch6_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.2_beta0.8  
+mse:0.37238070368766785, mae:0.38854047656059265
+
+long_term_forecast_ETTh1_96_96_fcv_patch6_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.1_beta0.9  
+mse:0.37452128529548645, mae:0.38840529322624207
+
+long_term_forecast_ETTh1_96_96_fcv_patch3_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.7_beta0.3  
+mse:0.36872145533561707, mae:0.3910670578479767
+
+long_term_forecast_ETTh1_96_96_fcv_patch3_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.6_beta0.4  
+mse:0.3689242899417877, mae:0.39033856987953186
+
+long_term_forecast_ETTh1_96_96_fcv_patch3_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.37002819776535034, mae:0.3890646696090698
+
+long_term_forecast_ETTh1_96_96_fcv_patch3_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.3_beta0.7  
+mse:0.37108632922172546, mae:0.38855791091918945
+
+long_term_forecast_ETTh1_96_96_fcv_patch3_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.2_beta0.8  
+mse:0.3726271688938141, mae:0.3881751596927643
+
+long_term_forecast_ETTh1_96_96_fcv_patch3_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.1_beta0.9  
+mse:0.37497657537460327, mae:0.3880150318145752
+
+long_term_forecast_ETTh1_96_192_fcv_patch24_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.7_beta0.3  
+mse:0.4124535620212555, mae:0.41842374205589294
+
+long_term_forecast_ETTh1_96_192_fcv_patch24_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.6_beta0.4  
+mse:0.4130419194698334, mae:0.4180302321910858
+
+long_term_forecast_ETTh1_96_192_fcv_patch24_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.4_beta0.6  
+mse:0.4150124192237854, mae:0.4174998104572296
+
+long_term_forecast_ETTh1_96_192_fcv_patch24_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.3_beta0.7  
+mse:0.41654977202415466, mae:0.4174160361289978
+
+long_term_forecast_ETTh1_96_192_fcv_patch24_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.2_beta0.8  
+mse:0.41872963309288025, mae:0.41759005188941956
+
+long_term_forecast_ETTh1_96_192_fcv_patch24_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.1_beta0.9  
+mse:0.42204469442367554, mae:0.4183076024055481
+
+long_term_forecast_ETTh1_96_192_fcv_patch12_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.7_beta0.3  
+mse:0.41251233220100403, mae:0.41840407252311707
+
+long_term_forecast_ETTh1_96_192_fcv_patch12_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.6_beta0.4  
+mse:0.4131506681442261, mae:0.4180225729942322
+
+long_term_forecast_ETTh1_96_192_fcv_patch12_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.4_beta0.6  
+mse:0.41506221890449524, mae:0.4174695611000061
+
+long_term_forecast_ETTh1_96_192_fcv_patch12_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.3_beta0.7  
+mse:0.41658538579940796, mae:0.4173778295516968
+
+long_term_forecast_ETTh1_96_192_fcv_patch12_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.2_beta0.8  
+mse:0.4187351167201996, mae:0.4175257980823517
+
+long_term_forecast_ETTh1_96_192_fcv_patch12_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.1_beta0.9  
+mse:0.42204827070236206, mae:0.418221652507782
+
+long_term_forecast_ETTh1_96_192_fcv_patch6_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.7_beta0.3  
+mse:0.41242727637290955, mae:0.4183521568775177
+
+long_term_forecast_ETTh1_96_192_fcv_patch6_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.6_beta0.4  
+mse:0.413011759519577, mae:0.4179374575614929
+
+long_term_forecast_ETTh1_96_192_fcv_patch6_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.41498130559921265, mae:0.4173349440097809
+
+long_term_forecast_ETTh1_96_192_fcv_patch6_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.3_beta0.7  
+mse:0.4165392518043518, mae:0.4172344207763672
+
+long_term_forecast_ETTh1_96_192_fcv_patch6_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.2_beta0.8  
+mse:0.4187260568141937, mae:0.41737550497055054
+
+long_term_forecast_ETTh1_96_192_fcv_patch6_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.1_beta0.9  
+mse:0.422020822763443, mae:0.418028861284256
+
+long_term_forecast_ETTh1_96_192_fcv_patch3_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.7_beta0.3  
+mse:0.41268888115882874, mae:0.4182935655117035
+
+long_term_forecast_ETTh1_96_192_fcv_patch3_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.6_beta0.4  
+mse:0.4133146405220032, mae:0.41787323355674744
+
+long_term_forecast_ETTh1_96_192_fcv_patch3_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.41544389724731445, mae:0.4172433018684387
+
+long_term_forecast_ETTh1_96_192_fcv_patch3_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.3_beta0.7  
+mse:0.4172164499759674, mae:0.4171445667743683
+
+long_term_forecast_ETTh1_96_192_fcv_patch3_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.2_beta0.8  
+mse:0.4196608066558838, mae:0.41730549931526184
+
+long_term_forecast_ETTh1_96_192_fcv_patch3_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.1_beta0.9  
+mse:0.4233315885066986, mae:0.4180329442024231
+
+long_term_forecast_ETTh1_96_336_fcv_patch24_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.7_beta0.3  
+mse:0.4480886161327362, mae:0.4372316598892212
+
+long_term_forecast_ETTh1_96_336_fcv_patch24_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.6_beta0.4  
+mse:0.4488275647163391, mae:0.43692824244499207
+
+long_term_forecast_ETTh1_96_336_fcv_patch24_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.4_beta0.6  
+mse:0.45142844319343567, mae:0.4367038607597351
+
+long_term_forecast_ETTh1_96_336_fcv_patch24_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.3_beta0.7  
+mse:0.45354247093200684, mae:0.4368893504142761
+
+long_term_forecast_ETTh1_96_336_fcv_patch24_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.2_beta0.8  
+mse:0.4566192030906677, mae:0.4375292658805847
+
+long_term_forecast_ETTh1_96_336_fcv_patch24_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.1_beta0.9  
+mse:0.4616323709487915, mae:0.4392264187335968
+
+long_term_forecast_ETTh1_96_336_fcv_patch12_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.7_beta0.3  
+mse:0.4482048749923706, mae:0.4373055398464203
+
+long_term_forecast_ETTh1_96_336_fcv_patch12_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.6_beta0.4  
+mse:0.44899487495422363, mae:0.43702343106269836
+
+long_term_forecast_ETTh1_96_336_fcv_patch12_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.3_beta0.7  
+mse:0.4537993371486664, mae:0.4370008707046509
+
+long_term_forecast_ETTh1_96_336_fcv_patch12_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.4_beta0.6  
+mse:0.4516362249851227, mae:0.4367993175983429
+
+long_term_forecast_ETTh1_96_336_fcv_patch12_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.2_beta0.8  
+mse:0.4569293260574341, mae:0.43766316771507263
+
+long_term_forecast_ETTh1_96_336_fcv_patch6_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.7_beta0.3  
+mse:0.4484829306602478, mae:0.43756067752838135
+
+long_term_forecast_ETTh1_96_336_fcv_patch12_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.1_beta0.9  
+mse:0.4619901776313782, mae:0.4393863379955292
+
+long_term_forecast_ETTh1_96_336_fcv_patch6_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.6_beta0.4  
+mse:0.4493453800678253, mae:0.4373491406440735
+
+long_term_forecast_ETTh1_96_336_fcv_patch6_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.3_beta0.7  
+mse:0.4543488025665283, mae:0.4374513328075409
+
+long_term_forecast_ETTh1_96_336_fcv_patch6_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.4521426856517792, mae:0.4372212588787079
+
+long_term_forecast_ETTh1_96_336_fcv_patch6_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.2_beta0.8  
+mse:0.4574944078922272, mae:0.43811753392219543
+
+long_term_forecast_ETTh1_96_336_fcv_patch3_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.7_beta0.3  
+mse:0.4486052989959717, mae:0.4375185966491699
+
+long_term_forecast_ETTh1_96_336_fcv_patch6_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.1_beta0.9  
+mse:0.46240952610969543, mae:0.43975991010665894
+
+long_term_forecast_ETTh1_96_336_fcv_patch3_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.6_beta0.4  
+mse:0.4495472311973572, mae:0.43730032444000244
+
+long_term_forecast_ETTh1_96_336_fcv_patch3_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.3_beta0.7  
+mse:0.4550573229789734, mae:0.4375304579734802
+
+long_term_forecast_ETTh1_96_336_fcv_patch3_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.4526333510875702, mae:0.4372418522834778
+
+long_term_forecast_ETTh1_96_336_fcv_patch3_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.2_beta0.8  
+mse:0.45852094888687134, mae:0.4382625222206116
+
+long_term_forecast_ETTh1_96_336_fcv_patch3_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.1_beta0.9  
+mse:0.4639362096786499, mae:0.4400109648704529
+
+long_term_forecast_ETTh1_96_720_fcv_patch24_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.7_beta0.3  
+mse:0.4494839608669281, mae:0.45641863346099854
+
+long_term_forecast_ETTh1_96_720_fcv_patch24_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.6_beta0.4  
+mse:0.4509534239768982, mae:0.45639216899871826
+
+long_term_forecast_ETTh1_96_720_fcv_patch24_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.4_beta0.6  
+mse:0.4560057818889618, mae:0.457161545753479
+
+long_term_forecast_ETTh1_96_720_fcv_patch24_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.3_beta0.7  
+mse:0.4603995084762573, mae:0.45845696330070496
+
+long_term_forecast_ETTh1_96_720_fcv_patch24_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.2_beta0.8  
+mse:0.46829238533973694, mae:0.4616313874721527
+
+long_term_forecast_ETTh1_96_720_fcv_patch12_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.7_beta0.3  
+mse:0.44907519221305847, mae:0.456205278635025
+
+long_term_forecast_ETTh1_96_720_fcv_patch12_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.6_beta0.4  
+mse:0.45045775175094604, mae:0.4561806321144104
+
+long_term_forecast_ETTh1_96_720_fcv_patch24_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen24_alpha0.1_beta0.9  
+mse:0.4885239601135254, mae:0.47182998061180115
+
+long_term_forecast_ETTh1_96_720_fcv_patch12_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.3_beta0.7  
+mse:0.45912376046180725, mae:0.45797255635261536
+
+long_term_forecast_ETTh1_96_720_fcv_patch12_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.4_beta0.6  
+mse:0.4551737308502197, mae:0.4568183720111847
+
+long_term_forecast_ETTh1_96_720_fcv_patch12_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.2_beta0.8  
+mse:0.46673384308815, mae:0.4610639214515686
+
+long_term_forecast_ETTh1_96_720_fcv_patch6_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.7_beta0.3  
+mse:0.4492892920970917, mae:0.45640090107917786
+
+long_term_forecast_ETTh1_96_720_fcv_patch12_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen12_alpha0.1_beta0.9  
+mse:0.48630276322364807, mae:0.47084617614746094
+
+long_term_forecast_ETTh1_96_720_fcv_patch6_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.6_beta0.4  
+mse:0.4507579207420349, mae:0.45647725462913513
+
+long_term_forecast_ETTh1_96_720_fcv_patch6_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.45567789673805237, mae:0.4575954079627991
+
+long_term_forecast_ETTh1_96_720_fcv_patch6_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.3_beta0.7  
+mse:0.45951858162879944, mae:0.45894697308540344
+
+long_term_forecast_ETTh1_96_720_fcv_patch6_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.2_beta0.8  
+mse:0.4671953320503235, mae:0.4622933268547058
+
+long_term_forecast_ETTh1_96_720_fcv_patch3_b0.3_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.7_beta0.3  
+mse:0.44985231757164, mae:0.4566308856010437
+
+long_term_forecast_ETTh1_96_720_fcv_patch3_b0.4_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.6_beta0.4  
+mse:0.4515506327152252, mae:0.45678040385246277
+
+long_term_forecast_ETTh1_96_720_fcv_patch6_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen6_alpha0.1_beta0.9  
+mse:0.486758828163147, mae:0.47238776087760925
+
+long_term_forecast_ETTh1_96_720_fcv_patch3_b0.7_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.3_beta0.7  
+mse:0.4605112373828888, mae:0.4592732787132263
+
+long_term_forecast_ETTh1_96_720_fcv_patch3_b0.8_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.2_beta0.8  
+mse:0.46900731325149536, mae:0.4630138576030731
+
+long_term_forecast_ETTh1_96_720_fcv_patch3_b0.6_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.4563716650009155, mae:0.4578014016151428
+
+long_term_forecast_ETTh1_96_720_fcv_patch3_b0.9_TimeFilter_ETTh1_addlossfcv_numpairsmax_patchlen3_alpha0.1_beta0.9  
+mse:0.4884233772754669, mae:0.47323310375213623
+
+long_term_forecast_ETTm1_96_96_fcv_patch24_b0.8_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.2_beta0.8  
+mse:0.3061138689517975, mae:0.3415200710296631
+
+long_term_forecast_ETTm1_96_96_fcv_patch24_b0.9_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.1_beta0.9  
+mse:0.3051180839538574, mae:0.3394615948200226
+
+long_term_forecast_ETTm1_96_96_fcv_patch24_b0.7_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.3_beta0.7  
+mse:0.3070816397666931, mae:0.34337136149406433
+
+long_term_forecast_ETTm1_96_96_fcv_patch24_b0.6_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.4_beta0.6  
+mse:0.30806979537010193, mae:0.34505972266197205
+
+long_term_forecast_ETTm1_96_96_fcv_patch24_b0.3_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.7_beta0.3  
+mse:0.3098297715187073, mae:0.3492174744606018
+
+long_term_forecast_ETTm1_96_96_fcv_patch12_b0.3_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.7_beta0.3  
+mse:0.309729665517807, mae:0.3491480350494385
+
+long_term_forecast_ETTm1_96_96_fcv_patch12_b0.7_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.3_beta0.7  
+mse:0.3070457875728607, mae:0.3433135449886322
+
+long_term_forecast_ETTm1_96_96_fcv_patch12_b0.4_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.6_beta0.4  
+mse:0.30934083461761475, mae:0.3479365110397339
+
+long_term_forecast_ETTm1_96_96_fcv_patch12_b0.8_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.2_beta0.8  
+mse:0.3060511350631714, mae:0.3414103388786316
+
+long_term_forecast_ETTm1_96_96_fcv_patch12_b0.6_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.4_beta0.6  
+mse:0.307928204536438, mae:0.34502100944519043
+
+long_term_forecast_ETTm1_96_96_fcv_patch12_b0.9_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.1_beta0.9  
+mse:0.30509206652641296, mae:0.3393619954586029
+
+long_term_forecast_ETTm1_96_96_fcv_patch6_b0.3_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen6_alpha0.7_beta0.3  
+mse:0.30956220626831055, mae:0.349159836769104
+
+long_term_forecast_ETTm1_96_96_fcv_patch6_b0.4_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen6_alpha0.6_beta0.4  
+mse:0.3093026280403137, mae:0.3480401635169983
+
+long_term_forecast_ETTm1_96_96_fcv_patch6_b0.7_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen6_alpha0.3_beta0.7  
+mse:0.3071533441543579, mae:0.34343579411506653
+
+long_term_forecast_ETTm1_96_96_fcv_patch6_b0.6_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.3079127073287964, mae:0.3450585901737213
+
+long_term_forecast_ETTm1_96_96_fcv_patch6_b0.9_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen6_alpha0.1_beta0.9  
+mse:0.30548298358917236, mae:0.3395516574382782
+
+long_term_forecast_ETTm1_96_96_fcv_patch6_b0.8_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen6_alpha0.2_beta0.8  
+mse:0.306369423866272, mae:0.3415307104587555
+
+long_term_forecast_ETTm1_96_96_fcv_patch3_b0.3_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen3_alpha0.7_beta0.3  
+mse:0.3100726008415222, mae:0.34952303767204285
+
+long_term_forecast_ETTm1_96_96_fcv_patch3_b0.4_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen3_alpha0.6_beta0.4  
+mse:0.30950862169265747, mae:0.34808093309402466
+
+long_term_forecast_ETTm1_96_96_fcv_patch3_b0.6_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.30843406915664673, mae:0.34554311633110046
+
+long_term_forecast_ETTm1_96_96_fcv_patch3_b0.9_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen3_alpha0.1_beta0.9  
+mse:0.30592912435531616, mae:0.3400914669036865
+
+long_term_forecast_ETTm1_96_96_fcv_patch3_b0.8_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen3_alpha0.2_beta0.8  
+mse:0.30665701627731323, mae:0.3419835865497589
+
+long_term_forecast_ETTm1_96_96_fcv_patch3_b0.7_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen3_alpha0.3_beta0.7  
+mse:0.30763372778892517, mae:0.34386739134788513
+
+long_term_forecast_ETTm1_96_192_fcv_patch24_b0.3_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.7_beta0.3  
+mse:0.35354942083358765, mae:0.3746863007545471
+
+long_term_forecast_ETTm1_96_192_fcv_patch24_b0.4_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.6_beta0.4  
+mse:0.35318663716316223, mae:0.3730763792991638
+
+long_term_forecast_ETTm1_96_192_fcv_patch24_b0.6_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.4_beta0.6  
+mse:0.35306453704833984, mae:0.37009960412979126
+
+long_term_forecast_ETTm1_96_192_fcv_patch24_b0.7_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.3_beta0.7  
+mse:0.3529092073440552, mae:0.3685455620288849
+
+long_term_forecast_ETTm1_96_192_fcv_patch24_b0.8_TimeFilter_ETTm1_addlossfcv_numpairsmax_patchlen24_alpha0.2_beta0.8  
+mse:0.3528096377849579, mae:0.3669429123401642
+

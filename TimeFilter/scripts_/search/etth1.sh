@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ############################################
 
-MAX_JOBS=7
-AVAILABLE_GPUS=(0 1 2 3 4 5 6)      # <<< set your real GPUs here
+MAX_JOBS=3
+AVAILABLE_GPUS=(4 5 6)      # <<< set your real GPUs here
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
@@ -63,7 +63,7 @@ model_name=TimeFilter
 seq_len=96
 
 patchlens=(24 12 6 3)
-betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
+betas=(0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)
 
 mkdir -p logs
 : > failures.txt
