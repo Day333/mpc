@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ########################################
 
-MAX_JOBS=3
-AVAILABLE_GPUS=(1 5 6)
+MAX_JOBS=1
+AVAILABLE_GPUS=(3)   # 修改为你的GPU
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
@@ -14,10 +14,11 @@ NUM_GPUS=${#AVAILABLE_GPUS[@]}
 # SEMAPHORE
 ########################################
 
-SEMAPHORE=/tmp/gs_semaphore_timefilter_pems07
+SEMAPHORE=/tmp/gs_semaphore_tqnet_traffic
 mkfifo $SEMAPHORE
 exec 9<>$SEMAPHORE
 rm $SEMAPHORE
+
 for ((i=0;i<${MAX_JOBS};i++)); do echo >&9; done
 
 ########################################
@@ -59,13 +60,19 @@ is_finished() {
 # SETTINGS
 ########################################
 
-model_name=TimeFilter
+model_name=TQNet
+
+root_path_name=./dataset/
+data_path_name=traffic.csv
+model_id_name=traffic
+data_name=custom
+
 seq_len=96
+enc_in=862
+random_seed=2024
 
-patchlens=(6)
-# betas=(0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)
-betas=(0.6)
-
+patchlens=(3)
+betas=(0.5)
 
 mkdir -p logs
 : > failures.txt
@@ -73,10 +80,10 @@ mkdir -p logs
 gpu_ptr=0
 
 ########################################
-# MAIN LOOP
+# SEARCH
 ########################################
 
-for pred_len in 12 24 48
+for pred_len in 96 192
 do
   for loss_patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
@@ -90,7 +97,7 @@ print(f"{a:.6f}".rstrip('0').rstrip('.'))
 PY
 )
 
-      model_id="PEMS07_${seq_len}_${pred_len}_fcv_patch${loss_patchlen}_b${beta}"
+      model_id="${model_id_name}_${seq_len}_${pred_len}_fcv_patch${loss_patchlen}_b${beta}"
       log_file="logs/${model_id}.log"
 
       if [ -f "$log_file" ] && is_finished "$log_file"; then
@@ -103,31 +110,23 @@ PY
       gpu_ptr=$(( (gpu_ptr + 1) % NUM_GPUS ))
 
       cmd="python -u run.py \
-        --task_name long_term_forecast \
         --is_training 1 \
-        --root_path ./data \
-        --data_path PEMS07.npz \
+        --root_path ${root_path_name} \
+        --data_path ${data_path_name} \
         --model_id ${model_id} \
         --model ${model_name} \
-        --data PEMS \
+        --data ${data_name} \
         --features M \
         --seq_len ${seq_len} \
         --pred_len ${pred_len} \
-        --e_layers 2 \
-        --enc_in 883 \
-        --dec_in 883 \
-        --c_out 883 \
-        --patch_len 96 \
-        --des Exp \
-        --d_model 512 \
-        --d_ff 1024 \
-        --dropout 0.1 \
-        --top_p 0.0 \
-        --learning_rate 0.001 \
-        --batch_size 16 \
-        --train_epochs 20 \
+        --enc_in ${enc_in} \
+        --cycle 168 \
+        --train_epochs 30 \
+        --patience 5 \
         --itr 1 \
-        --use_norm 0 \
+        --batch_size 16 \
+        --learning_rate 0.003 \
+        --random_seed ${random_seed} \
         --add_loss fcv \
         --loss_patchlen ${loss_patchlen} \
         --alpha_add_loss ${alpha_add} \
@@ -140,4 +139,4 @@ PY
 done
 
 wait
-echo "All TimeFilter PEMS07 fcv search jobs finished."
+echo "All TQNet traffic FCV search jobs finished."

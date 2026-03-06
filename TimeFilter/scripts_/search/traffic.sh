@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ########################################
 
-MAX_JOBS=3
-AVAILABLE_GPUS=(1 5 6)
+MAX_JOBS=4
+AVAILABLE_GPUS=(1)     # 如果多卡改成 (0 1 2 3 ...)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
@@ -14,10 +14,11 @@ NUM_GPUS=${#AVAILABLE_GPUS[@]}
 # SEMAPHORE
 ########################################
 
-SEMAPHORE=/tmp/gs_semaphore_timefilter_pems07
+SEMAPHORE=/tmp/gs_semaphore_timefilter_traffic
 mkfifo $SEMAPHORE
 exec 9<>$SEMAPHORE
 rm $SEMAPHORE
+
 for ((i=0;i<${MAX_JOBS};i++)); do echo >&9; done
 
 ########################################
@@ -62,10 +63,8 @@ is_finished() {
 model_name=TimeFilter
 seq_len=96
 
-patchlens=(6)
-# betas=(0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)
-betas=(0.6)
-
+patchlens=(2 4 8 16 24)
+betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
 
 mkdir -p logs
 : > failures.txt
@@ -73,10 +72,10 @@ mkdir -p logs
 gpu_ptr=0
 
 ########################################
-# MAIN LOOP
+# SEARCH
 ########################################
 
-for pred_len in 12 24 48
+for pred_len in 96 192 336 720
 do
   for loss_patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
@@ -90,7 +89,7 @@ print(f"{a:.6f}".rstrip('0').rstrip('.'))
 PY
 )
 
-      model_id="PEMS07_${seq_len}_${pred_len}_fcv_patch${loss_patchlen}_b${beta}"
+      model_id="traffic_${seq_len}_${pred_len}_fcv_patch${loss_patchlen}_b${beta}"
       log_file="logs/${model_id}.log"
 
       if [ -f "$log_file" ] && is_finished "$log_file"; then
@@ -105,29 +104,32 @@ PY
       cmd="python -u run.py \
         --task_name long_term_forecast \
         --is_training 1 \
-        --root_path ./data \
-        --data_path PEMS07.npz \
+        --root_path ./data/ \
+        --data_path traffic.csv \
         --model_id ${model_id} \
         --model ${model_name} \
-        --data PEMS \
+        --data custom \
         --features M \
         --seq_len ${seq_len} \
+        --label_len 48 \
         --pred_len ${pred_len} \
-        --e_layers 2 \
-        --enc_in 883 \
-        --dec_in 883 \
-        --c_out 883 \
+        --e_layers 3 \
+        --d_layers 1 \
+        --factor 3 \
+        --enc_in 862 \
+        --dec_in 862 \
+        --c_out 862 \
         --patch_len 96 \
         --des Exp \
         --d_model 512 \
-        --d_ff 1024 \
-        --dropout 0.1 \
+        --d_ff 2048 \
+        --dropout 0.3 \
         --top_p 0.0 \
+        --pos 0 \
         --learning_rate 0.001 \
         --batch_size 16 \
-        --train_epochs 20 \
+        --train_epochs 30 \
         --itr 1 \
-        --use_norm 0 \
         --add_loss fcv \
         --loss_patchlen ${loss_patchlen} \
         --alpha_add_loss ${alpha_add} \
@@ -140,4 +142,4 @@ PY
 done
 
 wait
-echo "All TimeFilter PEMS07 fcv search jobs finished."
+echo "All TimeFilter traffic FCV search jobs finished."

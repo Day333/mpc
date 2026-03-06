@@ -353,7 +353,7 @@ class Exp_Main(Exp_Basic):
                     # loss_add = (pred_diff - true_diff).abs().mean()
 
                     # === 最小改动：加入分块 (Chunking) 逻辑 ===
-                    chunk_size = 4096
+                    chunk_size = 128
                     num_valid_pairs = len(idx_i)
 
                     if num_valid_pairs == 0:
