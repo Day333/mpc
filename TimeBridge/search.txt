@@ -1,0 +1,396 @@
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.29509636759757996, mse:0.3562958836555481, rmse:0.5432277321815491, mape:0.5156530141830444, mspe:302.87457275390625
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.001_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.29506975412368774, mse:0.356272429227829, rmse:0.5432032346725464, mape:0.515620768070221, mspe:302.8322448730469
+
+long_term_forecast_weather_720_96_fcv_patch6_b0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.14482563734054565, mse:0.19613701105117798, rmse:0.38055962324142456, mape:0.4831121563911438, mspe:10332814.0
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.001_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.14481909573078156, mse:0.19611558318138123, rmse:0.3805510401725769, mape:0.48305171728134155, mspe:10332279.0
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.002_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.2950427532196045, mse:0.35624849796295166, rmse:0.543178379535675, mape:0.5155928134918213, mspe:302.7912902832031
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.005_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.2949613034725189, mse:0.3561762571334839, rmse:0.5431033968925476, mape:0.5155237317085266, mspe:302.6559143066406
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.01_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.2948256731033325, mse:0.35605546832084656, rmse:0.5429785251617432, mape:0.5153242349624634, mspe:302.439697265625
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.002_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.14481273293495178, mse:0.1960943043231964, rmse:0.38054269552230835, mape:0.4829894006252289, mspe:10331463.0
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.02_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.2945539057254791, mse:0.355813592672348, rmse:0.5427281856536865, mape:0.5149467587471008, mspe:302.007080078125
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.005_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.144794300198555, mse:0.19603054225444794, rmse:0.38051846623420715, mape:0.4827958941459656, mspe:10328702.0
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.05_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.29373955726623535, mse:0.3550822138786316, rmse:0.5419774651527405, mape:0.5139370560646057, mspe:300.6965637207031
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.01_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.14476217329502106, mse:0.19592399895191193, rmse:0.3804762363433838, mape:0.48246610164642334, mspe:10323309.0
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.1_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.29238566756248474, mse:0.3538481891155243, rmse:0.5407269597053528, mape:0.5122388005256653, mspe:298.5537414550781
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.2_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.28967025876045227, mse:0.3513054847717285, rmse:0.5382102131843567, mape:0.5084720849990845, mspe:294.3207092285156
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b1.0_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.2737672030925751, mse:0.3367268741130829, rmse:0.5232276916503906, mape:0.4934785068035126, mspe:267.7962646484375
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.02_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.1446978896856308, mse:0.1957094818353653, rmse:0.3803917467594147, mape:0.4818226993083954, mspe:10309275.0
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.05_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.1444960981607437, mse:0.19505992531776428, rmse:0.380126416683197, mape:0.4799526035785675, mspe:10268649.0
+
+long_term_forecast_ETTh2_720_96_fcv_patch6_b0.5_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.2834169268608093, mse:0.34572023153305054, rmse:0.5323691368103027, mape:0.5001782178878784, mspe:291.6003723144531
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.36014804244041443, mse:0.4002188742160797, rmse:0.6001233458518982, mape:0.5594393610954285, mspe:374.77508544921875
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.19380459189414978, mse:0.2930755913257599, rmse:0.44023242592811584, mape:0.5203752517700195, mspe:898171.125
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.001_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.3601266145706177, mse:0.4002033770084381, rmse:0.6001055240631104, mape:0.5594330430030823, mspe:374.7308044433594
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.2_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.14380650222301483, mse:0.19250327348709106, rmse:0.37921828031539917, mape:0.47213122248649597, mspe:10117597.0
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.005_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.3600420653820038, mse:0.40014126896858215, rmse:0.6000350713729858, mape:0.5593778491020203, mspe:374.5445861816406
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.002_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.36010444164276123, mse:0.40018707513809204, rmse:0.60008704662323, mape:0.5594186186790466, mspe:374.6828918457031
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.1_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.14422163367271423, mse:0.1941441297531128, rmse:0.37976524233818054, mape:0.47727248072624207, mspe:10082976.0
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.02_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.3597210943698883, mse:0.3999050259590149, rmse:0.5997675061225891, mape:0.5591814517974854, mspe:373.8399353027344
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.01_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.3599381446838379, mse:0.4000642001628876, rmse:0.5999484658241272, mape:0.5593098402023315, mspe:374.3149108886719
+
+long_term_forecast_weather_720_96_fcv_patch6_b1.0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.14341577887535095, mse:0.18478131294250488, rmse:0.3787027597427368, mape:0.4458850026130676, mspe:10730771.0
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.1_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.35797005891799927, mse:0.3986162841320038, rmse:0.5983060002326965, mape:0.5581950545310974, mspe:369.9329528808594
+
+long_term_forecast_weather_720_96_fcv_patch6_b0.5_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.14297331869602203, mse:0.1884128600358963, rmse:0.3781181275844574, mape:0.4587585926055908, mspe:10813471.0
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.05_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.35908353328704834, mse:0.3994322419166565, rmse:0.5992357730865479, mape:0.5587412118911743, mspe:372.4020690917969
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.5_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.34848904609680176, mse:0.3913410007953644, rmse:0.5903295874595642, mape:0.5525294542312622, mspe:346.69964599609375
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b0.2_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.3556433618068695, mse:0.39691588282585144, rmse:0.5963584184646606, mape:0.5568498373031616, mspe:364.9021301269531
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.001_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.18683922290802002, mse:0.23732367157936096, rmse:0.4322490394115448, mape:0.5447817444801331, mspe:16079817.0
+
+long_term_forecast_weather_720_192_fcv_patch6_b0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.18684518337249756, mse:0.23734548687934875, rmse:0.43225592374801636, mape:0.5448559522628784, mspe:16078730.0
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.3790452480316162, mse:0.41738930344581604, rmse:0.6156665086746216, mape:0.5715416073799133, mspe:409.7882995605469
+
+long_term_forecast_ETTh2_720_192_fcv_patch6_b1.0_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.33790284395217896, mse:0.3775850832462311, rmse:0.5812941193580627, mape:0.530653178691864, mspe:259.047607421875
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.002_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.3789713680744171, mse:0.4173317849636078, rmse:0.6156064867973328, mape:0.5714878439903259, mspe:409.5264892578125
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.001_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.37900862097740173, mse:0.4173610508441925, rmse:0.6156367659568787, mape:0.5715093612670898, mspe:409.65911865234375
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.005_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.1868169605731964, mse:0.23724015057086945, rmse:0.43222329020500183, mape:0.5444965362548828, mspe:16084959.0
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.002_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.18683376908302307, mse:0.23730294406414032, rmse:0.4322427213191986, mape:0.5447098016738892, mspe:16081411.0
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.01_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.37868666648864746, mse:0.4171088635921478, rmse:0.6153752207756042, mape:0.5712876915931702, mspe:408.492919921875
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.005_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.37886688113212585, mse:0.4172501564025879, rmse:0.6155216097831726, mape:0.5713983774185181, mspe:409.145751953125
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.02_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.18673522770404816, mse:0.23693285882472992, rmse:0.4321287274360657, mape:0.5434333682060242, mspe:16099570.0
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.01_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.186788871884346, mse:0.2371378093957901, rmse:0.43219077587127686, mape:0.5441368818283081, mspe:16089281.0
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.05_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.3772043287754059, mse:0.4159391224384308, rmse:0.6141695976257324, mape:0.5702158808708191, mspe:403.1220703125
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.02_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.3783208727836609, mse:0.4168226718902588, rmse:0.6150779128074646, mape:0.5709965825080872, mspe:407.17413330078125
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.001_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.19090873003005981, mse:0.29032135009765625, rmse:0.4369310438632965, mape:0.5181227922439575, mspe:661657.875
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.2_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.3714419901371002, mse:0.41118481755256653, rmse:0.6094604134559631, mape:0.5658566951751709, mspe:381.6907653808594
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.1_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.3752959072589874, mse:0.4143960475921631, rmse:0.6126139760017395, mape:0.568757951259613, mspe:396.0628662109375
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.1_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.18640173971652985, mse:0.23541952669620514, rmse:0.43174266815185547, mape:0.5380580425262451, mspe:16150070.0
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.05_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.1865890473127365, mse:0.23634225130081177, rmse:0.4319595396518707, mape:0.5413629412651062, mspe:16123020.0
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b1.0_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.3562155067920685, mse:0.39548489451408386, rmse:0.5968379378318787, mape:0.5514906048774719, mspe:301.9503479003906
+
+long_term_forecast_ETTh2_720_336_fcv_patch6_b0.5_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.36198779940605164, mse:0.4023386836051941, rmse:0.6016542315483093, mape:0.5575500726699829, mspe:346.8343200683594
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.001_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.43094325065612793, mse:0.46003761887550354, rmse:0.6564626693725586, mape:0.6433330774307251, mspe:753.2285766601562
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.5_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.18628869950771332, mse:0.23039567470550537, rmse:0.4316117465496063, mape:0.5187809467315674, mspe:15782133.0
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.43098074197769165, mse:0.46006855368614197, rmse:0.656491219997406, mape:0.6433570981025696, mspe:753.4751586914062
+
+long_term_forecast_weather_720_192_fcv_patch6_b0.2_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.18618887662887573, mse:0.23378920555114746, rmse:0.4314960837364197, mape:0.5320624709129333, mspe:16142390.0
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.005_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.430789053440094, mse:0.45991086959838867, rmse:0.6563452482223511, mape:0.6432311534881592, mspe:752.2338256835938
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.002_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.4309038519859314, mse:0.4600054621696472, rmse:0.6564326882362366, mape:0.6433023810386658, mspe:752.9751586914062
+
+long_term_forecast_weather_720_336_fcv_patch6_b0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.24051792919635773, mse:0.2816811501979828, rmse:0.49042627215385437, mape:0.6094629764556885, mspe:22021544.0
+
+long_term_forecast_weather_720_192_fcv_patch6_b1.0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.18724747002124786, mse:0.22795841097831726, rmse:0.43272101879119873, mape:0.509519636631012, mspe:14488081.0
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.02_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.43022000789642334, mse:0.4594404399394989, rmse:0.6559115648269653, mape:0.6428291201591492, mspe:748.538330078125
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.01_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.4305989444255829, mse:0.4597533047199249, rmse:0.6562004089355469, mape:0.6430826187133789, mspe:750.9967041015625
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.001_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.2405168116092682, mse:0.2816627025604248, rmse:0.49042513966560364, mape:0.6093934178352356, mspe:22020288.0
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.002_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.24051572382450104, mse:0.2816445827484131, rmse:0.4904240369796753, mape:0.6093205213546753, mspe:22018904.0
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.1_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.4270887076854706, mse:0.4568575918674469, rmse:0.6535202264785767, mape:0.6405027508735657, mspe:728.2709350585938
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.05_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.4290648400783539, mse:0.4584867060184479, rmse:0.6550304293632507, mape:0.6419805884361267, mspe:741.0453491210938
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.01_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.24050180613994598, mse:0.28149667382240295, rmse:0.49040982127189636, mape:0.6087560653686523, mspe:22007862.0
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.5_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.41022950410842896, mse:0.4431714713573456, rmse:0.6404916048049927, mape:0.6290911436080933, mspe:624.0568237304688
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.005_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.24051041901111603, mse:0.2815885841846466, rmse:0.49041861295700073, mape:0.6091086268424988, mspe:22014620.0
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b0.2_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.42301738262176514, mse:0.453512579202652, rmse:0.6503978371620178, mape:0.6375428438186646, mspe:702.1995849609375
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.002_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.18777544796466827, mse:0.28728094696998596, rmse:0.4333306550979614, mape:0.5134077072143555, mspe:647587.5
+
+long_term_forecast_ETTh2_720_720_fcv_patch6_b1.0_TimeBridge_ETTh2_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.40000656247138977, mse:0.4331236779689789, rmse:0.6324607133865356, mape:0.623318612575531, mspe:552.9335327148438
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.05_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.24043963849544525, mse:0.28076300024986267, rmse:0.4903464615345001, mape:0.6060026288032532, mspe:21948906.0
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.02_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.24048517644405365, mse:0.2813119888305664, rmse:0.49039289355278015, mape:0.6080642938613892, mspe:21993188.0
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.2_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.2400880604982376, mse:0.27815812826156616, rmse:0.4899878203868866, mape:0.5964276194572449, mspe:21800642.0
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.1_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.2403510957956314, mse:0.2798651158809662, rmse:0.4902561604976654, mape:0.6026871204376221, mspe:21894012.0
+
+long_term_forecast_weather_720_336_fcv_patch6_b1.0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.24002858996391296, mse:0.2705354690551758, rmse:0.48992711305618286, mape:0.5684062838554382, mspe:17850520.0
+
+long_term_forecast_weather_720_336_fcv_patch6_b0.5_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.23917819559574127, mse:0.27408865094184875, rmse:0.4890584647655487, mape:0.5818742513656616, mspe:21177196.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.001_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.310734361410141, mse:0.3303455412387848, rmse:0.5574355125427246, mape:0.6709692478179932, mspe:24290302.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.31073635816574097, mse:0.3303530216217041, rmse:0.5574373006820679, mape:0.6709991693496704, mspe:24291410.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.005_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.31072601675987244, mse:0.33031633496284485, rmse:0.5574280619621277, mape:0.6708430051803589, mspe:24285904.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.002_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.3107321560382843, mse:0.3303375840187073, rmse:0.557433545589447, mape:0.6709383130073547, mspe:24289122.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.02_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.310698539018631, mse:0.33020976185798645, rmse:0.5574033856391907, mape:0.6703739762306213, mspe:24269860.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.01_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.31071674823760986, mse:0.33028048276901245, rmse:0.5574197173118591, mape:0.6706811785697937, mspe:24280612.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.1_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.31058770418167114, mse:0.32967835664749146, rmse:0.5573039650917053, mape:0.6680651307106018, mspe:24183092.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.05_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.31064778566360474, mse:0.33000442385673523, rmse:0.5573578476905823, mape:0.6694866418838501, mspe:24237464.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.5_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.31042107939720154, mse:0.3265603482723236, rmse:0.5571544766426086, mape:0.6543131470680237, mspe:23385326.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b0.2_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.310518741607666, mse:0.32902511954307556, rmse:0.5572420954704285, mape:0.6651857495307922, mspe:24052598.0
+
+long_term_forecast_weather_720_720_fcv_patch6_b1.0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.3107985556125641, mse:0.32104671001434326, rmse:0.5574930906295776, mape:0.6335579752922058, mspe:17648344.0
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.005_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.19421306252479553, mse:0.293099045753479, rmse:0.440696120262146, mape:0.5212802290916443, mspe:580607.6875
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.01_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.19078919291496277, mse:0.29141920804977417, rmse:0.4367942214012146, mape:0.5164654850959778, mspe:601833.5
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.02_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.19099968671798706, mse:0.29108428955078125, rmse:0.43703511357307434, mape:0.5163475871086121, mspe:704177.375
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.05_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.18906886875629425, mse:0.28803595900535583, rmse:0.4348205029964447, mape:0.5143066048622131, mspe:821603.1875
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.1_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.1824563592672348, mse:0.2815745174884796, rmse:0.42714911699295044, mape:0.5071026682853699, mspe:635824.6875
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.2_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.19543373584747314, mse:0.2920059859752655, rmse:0.4420788884162903, mape:0.5169976353645325, mspe:762521.125
+
+long_term_forecast_electricity_720_720_fcv_patch6_b0.5_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.18132705986499786, mse:0.2785404920578003, rmse:0.4258251488208771, mape:0.5003555417060852, mspe:634361.125
+
+long_term_forecast_electricity_720_720_fcv_patch6_b1.0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.18352609872817993, mse:0.2778668999671936, rmse:0.4283994734287262, mape:0.49269604682922363, mspe:236405.75
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.16975033283233643, mse:0.26907238364219666, rmse:0.4120076894760132, mape:0.4889895021915436, mspe:521714.0625
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.001_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.1761568784713745, mse:0.2736630141735077, rmse:0.4197104573249817, mape:0.49486202001571655, mspe:656371.8125
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.002_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.16608011722564697, mse:0.26690375804901123, rmse:0.4075292944908142, mape:0.4889449179172516, mspe:585090.25
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.005_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.1741110384464264, mse:0.2724910378456116, rmse:0.4172661602497101, mape:0.4920884370803833, mspe:655456.4375
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.01_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.16746288537979126, mse:0.26651784777641296, rmse:0.4092223048210144, mape:0.48704254627227783, mspe:542070.3125
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.02_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.16743279993534088, mse:0.26624342799186707, rmse:0.409185528755188, mape:0.48531875014305115, mspe:624953.1875
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.05_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.16899698972702026, mse:0.2677302956581116, rmse:0.4110924303531647, mape:0.487497478723526, mspe:749200.3125
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.1_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.16952335834503174, mse:0.2681819796562195, rmse:0.41173213720321655, mape:0.4875912666320801, mspe:737533.4375
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.2_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.1632513552904129, mse:0.26152145862579346, rmse:0.4040437638759613, mape:0.4798293113708496, mspe:675721.9375
+
+long_term_forecast_electricity_720_336_fcv_patch6_b0.5_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.16330495476722717, mse:0.2601396143436432, rmse:0.4041100740432739, mape:0.47693291306495667, mspe:527376.9375
+
+long_term_forecast_electricity_720_336_fcv_patch6_b1.0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.16163790225982666, mse:0.2550845444202423, rmse:0.4020421504974365, mape:0.4653942286968231, mspe:288547.0
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.14935819804668427, mse:0.24783289432525635, rmse:0.38646888732910156, mape:0.4621012508869171, mspe:586587.625
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.002_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.14778876304626465, mse:0.24647612869739532, rmse:0.3844330310821533, mape:0.46076086163520813, mspe:632406.375
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.001_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.15189683437347412, mse:0.24970003962516785, rmse:0.389739453792572, mape:0.4644506573677063, mspe:489024.03125
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.01_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.14958012104034424, mse:0.24816647171974182, rmse:0.38675588369369507, mape:0.46301743388175964, mspe:706621.75
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.005_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.14753936231136322, mse:0.24577702581882477, rmse:0.3841085433959961, mape:0.4594193696975708, mspe:586336.875
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.02_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.1499689668416977, mse:0.2480904757976532, rmse:0.38725826144218445, mape:0.4624013602733612, mspe:537638.125
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.05_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.14766618609428406, mse:0.24638009071350098, rmse:0.38427358865737915, mape:0.4607773721218109, mspe:663770.6875
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.1_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.149254709482193, mse:0.24708862602710724, rmse:0.38633495569229126, mape:0.460780531167984, mspe:743295.5
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.2_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.14946740865707397, mse:0.24666713178157806, rmse:0.38661015033721924, mape:0.4601593017578125, mspe:743125.375
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.001_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.999_beta0.001  
+mse:0.12370836734771729, mse:0.22356563806533813, rmse:0.35172200202941895, mape:0.43013665080070496, mspe:317973.71875
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha1.0_beta0.0  
+mse:0.12177522480487823, mse:0.22149719297885895, rmse:0.34896308183670044, mape:0.42752596735954285, mspe:392786.4375
+
+long_term_forecast_electricity_720_192_fcv_patch6_b1.0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.14740274846553802, mse:0.24045506119728088, rmse:0.38393065333366394, mape:0.44755685329437256, mspe:397597.15625
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.5_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.12237247824668884, mse:0.21685025095939636, rmse:0.34981778264045715, mape:0.4191567301750183, mspe:424571.34375
+
+long_term_forecast_electricity_720_192_fcv_patch6_b0.5_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.5_beta0.5  
+mse:0.14620813727378845, mse:0.24364465475082397, rmse:0.382371723651886, mape:0.4563297629356384, mspe:567617.625
+
+long_term_forecast_electricity_720_96_fcv_patch6_b1.0_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.0_beta1.0  
+mse:0.12666085362434387, mse:0.2171974927186966, rmse:0.35589444637298584, mape:0.41573449969291687, mspe:556551.625
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.005_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.995_beta0.005  
+mse:0.12181784957647324, mse:0.22074376046657562, rmse:0.3490241467952728, mape:0.42526546120643616, mspe:403729.0
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.002_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.998_beta0.002  
+mse:0.12119133770465851, mse:0.22071543335914612, rmse:0.3481254577636719, mape:0.42600446939468384, mspe:288657.375
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.2_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.8_beta0.2  
+mse:0.12197423726320267, mse:0.21915221214294434, rmse:0.34924811124801636, mape:0.4232258200645447, mspe:339697.65625
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.1_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.9_beta0.1  
+mse:0.12201467901468277, mse:0.22114424407482147, rmse:0.34930598735809326, mape:0.42635926604270935, mspe:392217.65625
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.01_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.99_beta0.01  
+mse:0.12071186304092407, mse:0.21998053789138794, rmse:0.3474361300468445, mape:0.42560532689094543, mspe:448378.0
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.02_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.98_beta0.02  
+mse:0.12145068496465683, mse:0.22138024866580963, rmse:0.34849774837493896, mape:0.42738503217697144, mspe:388742.71875
+
+long_term_forecast_electricity_720_96_fcv_patch6_b0.05_TimeBridge_custom_addlossfcv_numpairsmax_patchlen6_alpha0.95_beta0.05  
+mse:0.12139524519443512, mse:0.21979708969593048, rmse:0.3484182059764862, mape:0.4242406189441681, mspe:455341.5
+
