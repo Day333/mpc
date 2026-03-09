@@ -320,6 +320,8 @@ class Exp_Main(Exp_Basic):
                     N = P * D
 
                     max_pairs = N * (N - 1) // 2
+                    print(max_pairs)
+                    raise ValueError
                     if self.args.num_pairs == "max":
                         num_pairs = max_pairs
                     elif self.args.num_pairs.isdigit():
@@ -353,7 +355,7 @@ class Exp_Main(Exp_Basic):
                     # loss_add = (pred_diff - true_diff).abs().mean()
 
                     # === 最小改动：加入分块 (Chunking) 逻辑 ===
-                    chunk_size = 128
+                    chunk_size = 64
                     num_valid_pairs = len(idx_i)
 
                     if num_valid_pairs == 0:

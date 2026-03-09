@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ############################################
 
-MAX_JOBS=2
-AVAILABLE_GPUS=(0 1)
+MAX_JOBS=1
+AVAILABLE_GPUS=(5)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 

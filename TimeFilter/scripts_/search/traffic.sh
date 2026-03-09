@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ########################################
 
-MAX_JOBS=4
-AVAILABLE_GPUS=(1)     # 如果多卡改成 (0 1 2 3 ...)
+MAX_JOBS=2
+AVAILABLE_GPUS=(2 3)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
@@ -63,8 +63,11 @@ is_finished() {
 model_name=TimeFilter
 seq_len=96
 
-patchlens=(2 4 8 16 24)
-betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
+# patchlens=(2 4 8 16 24)
+# betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)
+
+patchlens=(3)
+betas=(0.6)
 
 mkdir -p logs
 : > failures.txt
@@ -75,7 +78,8 @@ gpu_ptr=0
 # SEARCH
 ########################################
 
-for pred_len in 96 192 336 720
+# for pred_len in 96 192 336 720
+for pred_len in 192 336
 do
   for loss_patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do

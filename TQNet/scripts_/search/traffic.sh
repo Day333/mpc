@@ -72,7 +72,7 @@ enc_in=862
 random_seed=2024
 
 patchlens=(3)
-betas=(0.5)
+betas=(0.6)
 
 mkdir -p logs
 : > failures.txt
@@ -83,7 +83,7 @@ gpu_ptr=0
 # SEARCH
 ########################################
 
-for pred_len in 96 192
+for pred_len in 720
 do
   for loss_patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
@@ -130,7 +130,7 @@ PY
         --add_loss fcv \
         --loss_patchlen ${loss_patchlen} \
         --alpha_add_loss ${alpha_add} \
-        --beta_add_loss ${beta}"
+        --beta_add_loss ${beta}" \
 
       run_job $gpu_id "$cmd" "$log_file" "$model_id" &
 

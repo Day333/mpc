@@ -4015,3 +4015,12 @@ mse:0.13548170030117035, mae:0.22605355083942413
 long_term_forecast_PEMS07_96_48_fcv_patch12_b0.5_TQNet_PEMS_addlossfcv_numpairsmax_patchlen12_alpha0.5_beta0.5  
 mse:0.07738734036684036, mae:0.17394958436489105
 
+long_term_forecast_traffic_96_96_fcv_patch3_b0.5_TQNet_custom_addlossfcv_numpairsmax_patchlen3_alpha0.5_beta0.5  
+mse:0.40609291195869446, mae:0.24678000807762146
+
+long_term_forecast_traffic_96_336_fcv_patch3_b0.5_TQNet_custom_addlossfcv_numpairsmax_patchlen3_alpha0.5_beta0.5  
+mse:0.44554442167282104, mae:0.26455044746398926
+
+long_term_forecast_traffic_96_192_fcv_patch3_b0.5_TQNet_custom_addlossfcv_numpairsmax_patchlen3_alpha0.5_beta0.5  
+mse:0.42569610476493835, mae:0.2574787735939026
+
