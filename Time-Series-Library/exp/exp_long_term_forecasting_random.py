@@ -138,21 +138,29 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                 if self.args.add_loss == "scv":    # spatial cross-variable
                     # channel diff
                     max_pairs = D * (D - 1) // 2
-                    num_pairs = max_pairs
-
-                    idx_i = torch.randint(0, D, (num_pairs,), device=outputs.device)
-                    idx_j = torch.randint(0, D, (num_pairs,), device=outputs.device)
-
-                    mask = idx_i < idx_j
-                    idx_i, idx_j = idx_i[mask], idx_j[mask]
                     
+                    if self.args.num_pairs == "max":
+                        all_edges = torch.combinations(torch.arange(D, device=device))
+                        idx_i, idx_j = all_edges[:, 0], all_edges[:, 1]
+                        
+                    elif self.args.num_pairs.isdigit():
+                        target_num = min(int(self.args.num_pairs), max_pairs)
+                        
+                        all_edges = torch.combinations(torch.arange(D, device=device))
+                        perm = torch.randperm(all_edges.size(0), device=device)[:target_num]
+                        sampled_edges = all_edges[perm]
+                        
+                        idx_i, idx_j = sampled_edges[:, 0], sampled_edges[:, 1]
+                    else:
+                        raise ValueError("num_pair error")
+
                     pred_diff = outputs[:,:,idx_i] - outputs[:,:,idx_j]
                     true_diff = batch_y[:,:,idx_i] - batch_y[:,:,idx_j]
 
                     loss_add = (pred_diff - true_diff).abs().mean()
+
                 elif self.args.add_loss == "stcv":   # spatio-temporal cross-variable
                     # patch loss diff
-
                     patch_len = self.args.loss_patchlen
                     stride    = patch_len
 
@@ -166,41 +174,48 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                     y_p   = y_p.permute(0, 1, 3, 2).contiguous()
 
                     B, P, L, D = out_p.shape
-
-                    out_nodes = out_p.permute(0,1,3,2).reshape(B, P*D, L)
-                    y_nodes   = y_p.permute(0,1,3,2).reshape(B, P*D, L)
-
                     N = P * D
 
-                    max_pairs = N * (N - 1) // 2
-                    num_pairs = max_pairs
+                    out_nodes = out_p.permute(0,1,3,2).reshape(B, N, L)
+                    y_nodes   = y_p.permute(0,1,3,2).reshape(B, N, L)
 
-                    idx_i = torch.randint(0, N, (num_pairs,), device=device)
-                    idx_j = torch.randint(0, N, (num_pairs,), device=device)
+                    max_pairs = (D * (D - 1) // 2) * (P * (P - 1) * 2) 
 
-                    patch_i = idx_i // D
-                    patch_j = idx_j // D
+                    if self.args.num_pairs == "max":
+                        all_edges = torch.combinations(torch.arange(N, device=device))
+                        idx_i, idx_j = all_edges[:, 0], all_edges[:, 1]
+                        
+                        patch_i, patch_j = idx_i // D, idx_j // D
+                        var_i, var_j = idx_i % D, idx_j % D
+                        
+                        mask = (var_i != var_j) & (patch_i != patch_j)
+                        
+                        idx_i = idx_i[mask]
+                        idx_j = idx_j[mask]
 
-                    var_i = idx_i % D
-                    var_j = idx_j % D
-
-                    mask = ~((var_i == var_j) & (patch_i != patch_j))
-
-                    mask = mask & (idx_i != idx_j)
-
-                    mask = mask & (patch_i != patch_j)
-                    mask = mask & (idx_i < idx_j)
-
-                    idx_i = idx_i[mask]
-                    idx_j = idx_j[mask]
+                    elif self.args.num_pairs.isdigit():
+                        target_num = min(int(self.args.num_pairs), max_pairs)
+                        
+                        all_edges = torch.combinations(torch.arange(N, device=device))
+                        patch_i, patch_j = all_edges[:, 0] // D, all_edges[:, 1] // D
+                        var_i, var_j = all_edges[:, 0] % D, all_edges[:, 1] % D
+                        
+                        mask = (var_i != var_j) & (patch_i != patch_j)
+                        valid_edges = all_edges[mask]
+                        
+                        perm = torch.randperm(valid_edges.size(0), device=device)[:target_num]
+                        sampled_edges = valid_edges[perm]
+                        
+                        idx_i, idx_j = sampled_edges[:, 0], sampled_edges[:, 1]
+                    else:
+                        raise ValueError("num_pair error")
 
                     pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
                     true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
 
                     loss_add = (pred_diff - true_diff).abs().mean()
-                elif self.args.add_loss == "fcv":    # full cross-variable
-                    # patch loss diff
 
+                elif self.args.add_loss == "fcv":    # full cross-variable
                     # patch_len = self.args.loss_patchlen
                     patch_len = self.args.pred_len // self.args.loss_patchlen
                     stride    = patch_len
@@ -215,59 +230,42 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                     y_p   = y_p.permute(0, 1, 3, 2).contiguous()
 
                     B, P, L, D = out_p.shape
-
-                    out_nodes = out_p.permute(0,1,3,2).reshape(B, P*D, L)
-                    y_nodes   = y_p.permute(0,1,3,2).reshape(B, P*D, L)
-
                     N = P * D
 
-                    max_pairs = N * (N - 1) // 2
-                    num_pairs = max_pairs
+                    out_nodes = out_p.permute(0,1,3,2).reshape(B, N, L)
+                    y_nodes   = y_p.permute(0,1,3,2).reshape(B, N, L)
 
-                    idx_i = torch.randint(0, N, (num_pairs,), device=device)
-                    idx_j = torch.randint(0, N, (num_pairs,), device=device)
-                    
-                    patch_i = idx_i // D
-                    patch_j = idx_j // D
+                    max_pairs = (D * (D - 1) // 2) * (P ** 2)
 
-                    var_i = idx_i % D
-                    var_j = idx_j % D
+                    if self.args.num_pairs == "max":
+                        all_edges = torch.combinations(torch.arange(N, device=device))
+                        idx_i, idx_j = all_edges[:, 0], all_edges[:, 1]
+                        
+                        var_i = idx_i % D
+                        var_j = idx_j % D
+                        
+                        mask = (var_i != var_j)
+                        
+                        idx_i = idx_i[mask]
+                        idx_j = idx_j[mask]
 
-                    mask = ~((var_i == var_j) & (patch_i != patch_j))
-
-                    mask = mask & (idx_i != idx_j)
-                    mask = mask & (idx_i < idx_j)
-
-                    idx_i = idx_i[mask]
-                    idx_j = idx_j[mask]
-                    
-                    # 禁止同变量patch间交互
-
-                    # pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
-                    # true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
-
-                    # loss_add = (pred_diff - true_diff).abs().mean()
-
-                    # === Chunking ===
-                    chunk_size = 1024
-                    num_valid_pairs = len(idx_i)
-                    loss_add = 0.0
-                    
-                    if num_valid_pairs > 0:
-                        for start in range(0, num_valid_pairs, chunk_size):
-                            end = min(start + chunk_size, num_valid_pairs)
-                            
-                            chunk_i = idx_i[start:end]
-                            chunk_j = idx_j[start:end]
-                            
-                            pred_diff_chunk = out_nodes[:, chunk_i] - out_nodes[:, chunk_j]
-                            true_diff_chunk = y_nodes[:, chunk_i]   - y_nodes[:, chunk_j]
-                            
-                            loss_add += (pred_diff_chunk - true_diff_chunk).abs().sum()
-                            
-                        loss_add = loss_add / (B * num_valid_pairs * L)
+                    elif self.args.num_pairs.isdigit():
+                        target_num = min(int(self.args.num_pairs), max_pairs)
+                        
+                        all_edges = torch.combinations(torch.arange(N, device=device))
+                        mask = (all_edges[:, 0] % D) != (all_edges[:, 1] % D)
+                        valid_edges = all_edges[mask]
+                        
+                        perm = torch.randperm(valid_edges.size(0), device=device)[:target_num]
+                        sampled_edges = valid_edges[perm]
+                        
+                        idx_i, idx_j = sampled_edges[:, 0], sampled_edges[:, 1]
                     else:
-                        loss_add = torch.tensor(0.0, device=out_nodes.device, requires_grad=True)
+                        raise ValueError("num_pair error")
+
+                    pred_diff = out_nodes[:, idx_i] - out_nodes[:, idx_j]   # [B, num_pairs, L]
+                    true_diff = y_nodes[:, idx_i]   - y_nodes[:, idx_j]
+                    loss_add = (pred_diff - true_diff).abs().mean()
 
                 if self.args.add_loss == "None":
                     loss = loss_tmp

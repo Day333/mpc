@@ -13,7 +13,7 @@ train_epochs=10
 patience=10
 batch_size=16
 
-add_loss=fcv
+add_loss=scv
 loss_patchlen=12
 alpha_add_loss=0.5
 beta_add_loss=0.5
