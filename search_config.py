@@ -14,7 +14,7 @@ def parse_line(header_line, metric_line):
     if "addloss" not in header_line:
         return None
 
-    metric_match = re.search(r"mse:(.*?), mae:(.*)", metric_line)
+    metric_match = re.search(r"mse:([\d.eE+-]+),\s*(?:mae):([\d.eE+-]+)", metric_line)
     if metric_match is None:
         return None
 
