@@ -28,3 +28,12 @@ mse:0.27917811274528503, mae:0.2936270833015442, rse:0.6939468383789062
 long_term_forecast_ETTm1_96_192_PDF_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.5_beta0.5  
 mse:0.3602662682533264, mae:0.37299245595932007, rse:0.5713645815849304
 
+long_term_forecast_ETTm1_96_336_PDF_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.5_beta0.5  
+mse:0.3937928080558777, mae:0.396370530128479, rse:0.5971482992172241
+
+long_term_forecast_ETTm1_96_720_PDF_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.5_beta0.5  
+mse:0.4510922431945801, mae:0.430010586977005, rse:0.6390037536621094
+
+long_term_forecast_ETTm1_96_96_PDF_ETTm1_addlossfcv_numpairsmax_patchlen12_alpha0.95_beta0.05  
+mse:0.3276077210903168, mae:0.3611520528793335, rse:0.5446392893791199
+

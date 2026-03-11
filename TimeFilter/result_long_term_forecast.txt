@@ -3658,3 +3658,6 @@ mse:0.13066570460796356, mae:0.22472408413887024
 long_term_forecast_traffic_96_192_fcv_patch3_b0.6_TimeFilter_custom_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
 mse:0.3949694037437439, mae:0.24785330891609192
 
+long_term_forecast_traffic_96_336_fcv_patch3_b0.6_TimeFilter_custom_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.41334840655326843, mae:0.25585582852363586
+

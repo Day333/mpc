@@ -68,10 +68,9 @@ seq_len=96
 random_seed=2021
 
 patchlens=(12)
-betas=(0.5)
+betas=(0.9)
 
 mkdir -p logs
-: > failures.txt
 
 gpu_ptr=0
 
