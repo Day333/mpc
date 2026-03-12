@@ -3661,3 +3661,12 @@ mse:0.3949694037437439, mae:0.24785330891609192
 long_term_forecast_traffic_96_336_fcv_patch3_b0.6_TimeFilter_custom_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
 mse:0.41334840655326843, mae:0.25585582852363586
 
+long_term_forecast_PEMS07_96_24_fcv_patch6_b0.6_TimeFilter_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.0659857913851738, mae:0.16290321946144104
+
+long_term_forecast_PEMS07_96_48_fcv_patch6_b0.6_TimeFilter_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.08577223122119904, mae:0.18720880150794983
+
+long_term_forecast_PEMS07_96_12_fcv_patch6_b0.6_TimeFilter_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
+mse:0.053707025945186615, mae:0.14653514325618744
+

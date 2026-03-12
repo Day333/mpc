@@ -1,7 +1,7 @@
 import re
 import argparse
 import pandas as pd
-
+import numpy as np
 
 VALID_PATCH = {3, 6, 12, 24, 48}
 EXPECTED_PREDS = [96, 192, 336, 720]
@@ -143,9 +143,9 @@ def analyze(df: pd.DataFrame, wide_mode: str = "full"):
 
                 for pl in pred_list:
                     if pl not in mse_wide.columns:
-                        mse_wide[pl] = pd.NA
+                        mse_wide[pl] = np.nan
                     if pl not in mae_wide.columns:
-                        mae_wide[pl] = pd.NA
+                        mae_wide[pl] = np.nan
 
                 mse_wide = mse_wide[pred_list]
                 mae_wide = mae_wide[pred_list]
