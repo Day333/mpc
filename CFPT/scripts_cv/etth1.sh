@@ -5,7 +5,7 @@ set -e
 # CONFIG
 ########################################
 
-MAX_JOBS=12
+MAX_JOBS=6
 AVAILABLE_GPUS=(0 1 2 3 5 6)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
@@ -63,7 +63,7 @@ seed=2025
 d_model=512
 
 patchlens=(48 24 12 6 3)
-betas=(0.01 0.02 0.05 0.1 0.2 0.5 1.0)
+betas=(0.01 0.02 0.05 0.1 0.2 0.5 0.9 1.0)
 
 mkdir -p logs
 

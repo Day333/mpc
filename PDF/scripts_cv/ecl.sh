@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ########################################
 
-MAX_JOBS=1
-AVAILABLE_GPUS=(0)
+MAX_JOBS=2
+AVAILABLE_GPUS=(1 2)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
@@ -70,7 +70,7 @@ data_path_name=electricity.csv
 seq_len=96
 random_seed=2021
 
-patchlens=(12)
+patchlens=(3)
 betas=(0.6)
 
 mkdir -p logs
@@ -84,6 +84,17 @@ gpu_ptr=0
 
 for pred_len in 96 192 336 720
 do
+  if [ "$pred_len" -eq 96 ] || [ "$pred_len" -eq 192 ]; then
+    batch_size=32
+  elif [ "$pred_len" -eq 336 ]; then
+    batch_size=8
+  elif [ "$pred_len" -eq 720 ]; then
+    batch_size=4
+  else
+    echo "Unsupported pred_len: $pred_len"
+    exit 1
+  fi
+
   for loss_patchlen in "${patchlens[@]}"; do
     for beta in "${betas[@]}"; do
 
@@ -136,7 +147,7 @@ PY
         --pct_start 0.2 \
         --patience 10 \
         --itr 1 \
-        --batch_size 32 \
+        --batch_size ${batch_size} \
         --learning_rate 0.0001 \
         --add_loss fcv \
         --loss_patchlen ${loss_patchlen} \

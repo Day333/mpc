@@ -3670,3 +3670,5 @@ mse:0.08577223122119904, mae:0.18720880150794983
 long_term_forecast_PEMS07_96_12_fcv_patch6_b0.6_TimeFilter_PEMS_addlossfcv_numpairsmax_patchlen6_alpha0.4_beta0.6  
 mse:0.053707025945186615, mae:0.14653514325618744
 
+long_term_forecast_traffic_96_720_fcv_patch3_b0.6_TimeFilter_custom_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.44628632068634033, mae:0.2745946943759918
