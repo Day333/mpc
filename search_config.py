@@ -210,7 +210,7 @@ def main():
     parser.add_argument(
         "--wide_mode",
         type=str,
-        default="full",
+        default="avg",
         choices=["full", "avg"],
         help="Wide table output: 'full' prints per-pred columns; 'avg' prints only avg_mse/avg_mae/coverage.",
     )

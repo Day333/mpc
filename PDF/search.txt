@@ -54,3 +54,10 @@ mse:0.16527731716632843, mae:0.24583394825458527, rse:0.4040643274784088
 
 long_term_forecast_Electricity_96_192_PDF_custom_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
 mse:0.1735764443874359, mae:0.2549123466014862, rse:0.4142359495162964
+
+long_term_forecast_Electricity_96_720_PDF_custom_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.230062797665596, mae:0.30742931365966797, rse:0.4784654676914215
+
+long_term_forecast_Electricity_96_336_PDF_custom_addlossfcv_numpairsmax_patchlen3_alpha0.4_beta0.6  
+mse:0.18701383471488953, mae:0.2692784070968628, rse:0.430405855178833
+
