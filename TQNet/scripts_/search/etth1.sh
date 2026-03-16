@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ############################################
 
-MAX_JOBS=2
-AVAILABLE_GPUS=(6)
+MAX_JOBS=4
+AVAILABLE_GPUS=(0 1 2 3 5 6)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
@@ -76,6 +76,7 @@ random_seed=2024
 patchlens=(48 24 12 6 3)
 betas=(0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.3 0.4 0.5 0.6 0.7 0.8 0.9 1.0)
 
+
 mkdir -p logs
 : > failures.txt
 
@@ -108,7 +109,6 @@ PY
           continue
       fi
 
-      # 真正轮换 GPU（父进程）
       gpu_id=${AVAILABLE_GPUS[$gpu_ptr]}
       gpu_ptr=$(( (gpu_ptr + 1) % NUM_GPUS ))
 

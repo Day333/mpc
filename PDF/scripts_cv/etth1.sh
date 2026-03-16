@@ -6,7 +6,7 @@ set -e
 ########################################
 
 MAX_JOBS=1
-AVAILABLE_GPUS=(0)   # 修改为你的GPU
+AVAILABLE_GPUS=(0)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 

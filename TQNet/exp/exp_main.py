@@ -201,41 +201,17 @@ class Exp_Main(Exp_Basic):
                 B, T, D = outputs.shape
                 device = outputs.device
 
-                if self.args.add_loss == "corr":
-                    # corr diff
-                    X = outputs
-                    Y = batch_y
-
-                    mean_X = X.mean(dim=1, keepdim=True)     # [B, 1, D]
-                    std_X  = X.std(dim=1, keepdim=True)      # [B, 1, D]
-
-                    mean_Y = Y.mean(dim=1, keepdim=True)
-                    std_Y  = Y.std(dim=1, keepdim=True)
-
-                    X = (X - mean_X) / (std_X + 1e-6)
-                    Y = (Y - mean_Y) / (std_Y + 1e-6)
-
-                    # X: [B, T, D] -> [B, D, T]
-                    X_t = X.transpose(1, 2)
-                    Y_t = Y.transpose(1, 2)
-
-                    Cx = torch.bmm(X_t, X) / T   # [B, D, D]
-                    Cy = torch.bmm(Y_t, Y) / T   # [B, D, D]
-
-                    loss_add = (Cx - Cy).abs().mean()
-                elif self.args.add_loss == "scv":    # spatial cross-variable
+                if self.args.add_loss == "scv":    # spatial cross-variable
                     # channel diff
                     max_pairs = D * (D - 1) // 2
-                    if self.args.num_pairs == "max":
-                        num_pairs = max_pairs
-                    elif self.args.num_pairs.isdigit():
-                        num_pairs = min(int(self.args.num_pairs), max_pairs)
-                    else:
-                        raise ValueError("num_pair error")
+                    num_pairs = max_pairs
 
                     idx_i = torch.randint(0, D, (num_pairs,), device=outputs.device)
                     idx_j = torch.randint(0, D, (num_pairs,), device=outputs.device)
 
+                    mask = idx_i < idx_j
+                    idx_i, idx_j = idx_i[mask], idx_j[mask]
+                    
                     pred_diff = outputs[:,:,idx_i] - outputs[:,:,idx_j]
                     true_diff = batch_y[:,:,idx_i] - batch_y[:,:,idx_j]
 
@@ -263,17 +239,11 @@ class Exp_Main(Exp_Basic):
                     N = P * D
 
                     max_pairs = N * (N - 1) // 2
-                    if self.args.num_pairs == "max":
-                        num_pairs = max_pairs
-                    elif self.args.num_pairs.isdigit():
-                        num_pairs = min(int(self.args.num_pairs), max_pairs)
-                    else:
-                        raise ValueError("num_pair error")
+                    num_pairs = max_pairs
 
                     idx_i = torch.randint(0, N, (num_pairs,), device=device)
                     idx_j = torch.randint(0, N, (num_pairs,), device=device)
 
-                    # 禁止同变量patch间交互
                     patch_i = idx_i // D
                     patch_j = idx_j // D
 
@@ -283,11 +253,9 @@ class Exp_Main(Exp_Basic):
                     mask = ~((var_i == var_j) & (patch_i != patch_j))
 
                     mask = mask & (idx_i != idx_j)
-                    # 禁止同变量patch间交互
 
-                    # 取消相同时间 patch 的交互
                     mask = mask & (patch_i != patch_j)
-                    # 取消相同时间 patch 的交互
+                    mask = mask & (idx_i < idx_j)
 
                     idx_i = idx_i[mask]
                     idx_j = idx_j[mask]
@@ -320,18 +288,11 @@ class Exp_Main(Exp_Basic):
                     N = P * D
 
                     max_pairs = N * (N - 1) // 2
-
-                    if self.args.num_pairs == "max":
-                        num_pairs = max_pairs
-                    elif self.args.num_pairs.isdigit():
-                        num_pairs = min(int(self.args.num_pairs), max_pairs)
-                    else:
-                        raise ValueError("num_pair error")
+                    num_pairs = max_pairs
 
                     idx_i = torch.randint(0, N, (num_pairs,), device=device)
                     idx_j = torch.randint(0, N, (num_pairs,), device=device)
                     
-                    # 禁止同变量patch间交互
                     patch_i = idx_i // D
                     patch_j = idx_j // D
 
@@ -353,21 +314,26 @@ class Exp_Main(Exp_Basic):
 
                     # loss_add = (pred_diff - true_diff).abs().mean()
 
-                    # === 最小改动：加入分块 (Chunking) 逻辑 ===
-                    chunk_size = 64
+                    # === Chunking ===
+                    chunk_size = 1024
                     num_valid_pairs = len(idx_i)
-
-                    if num_valid_pairs == 0:
-                        loss_add = out_nodes.new_tensor(0., requires_grad=True)
-                    else:
-                        loss_add = 0.
+                    loss_add = 0.0
+                    
+                    if num_valid_pairs > 0:
                         for start in range(0, num_valid_pairs, chunk_size):
-                            sl = slice(start, start + chunk_size)
-                            pred_diff = out_nodes[:, idx_i[sl]] - out_nodes[:, idx_j[sl]]
-                            true_diff = y_nodes[:, idx_i[sl]]   - y_nodes[:, idx_j[sl]]
-                            loss_add += (pred_diff - true_diff).abs().sum()
-
-                        loss_add /= (B * num_valid_pairs * L)
+                            end = min(start + chunk_size, num_valid_pairs)
+                            
+                            chunk_i = idx_i[start:end]
+                            chunk_j = idx_j[start:end]
+                            
+                            pred_diff_chunk = out_nodes[:, chunk_i] - out_nodes[:, chunk_j]
+                            true_diff_chunk = y_nodes[:, chunk_i]   - y_nodes[:, chunk_j]
+                            
+                            loss_add += (pred_diff_chunk - true_diff_chunk).abs().sum()
+                            
+                        loss_add = loss_add / (B * num_valid_pairs * L)
+                    else:
+                        loss_add = torch.tensor(0.0, device=out_nodes.device, requires_grad=True)
 
                 if self.args.add_loss == "None":
                     loss = loss_tmp

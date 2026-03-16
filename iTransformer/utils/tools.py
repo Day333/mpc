@@ -75,16 +75,34 @@ class StandardScaler():
         return (data * self.std) + self.mean
 
 
+# def visual(true, preds=None, name='./pic/test.pdf'):
+#     """
+#     Results visualization
+#     """
+#     plt.figure(figsize=(4, 3), dpi=100)
+    
+#     if preds is not None:
+#         plt.plot(preds, label='Prediction', linewidth=1, color='blue')
+#     plt.plot(true, label='GroundTruth', linewidth=1, color='black')
+#     plt.legend()
+#     plt.savefig(name, bbox_inches='tight')
+
+import seaborn as sns
+# '#C44E52'
 def visual(true, preds=None, name='./pic/test.pdf'):
-    """
-    Results visualization
-    """
-    plt.figure()
-    plt.plot(true, label='GroundTruth', linewidth=2)
+    sns.set_theme(style="darkgrid", context="notebook")
+
+    plt.figure(figsize=(6, 4))
+
+    
     if preds is not None:
-        plt.plot(preds, label='Prediction', linewidth=2)
-    plt.legend()
-    plt.savefig(name, bbox_inches='tight')
+        plt.plot(preds, color='#C44E52', linewidth=2, label='Prediction')
+    plt.plot(true, color='black', linewidth=2, label='GroundTruth')
+    
+    plt.legend(loc='upper left', frameon=True, fontsize=14)
+    plt.tight_layout()
+    plt.savefig(name, bbox_inches='tight', dpi=300)
+    plt.close()
 
 
 def adjustment(gt, pred):

@@ -69,8 +69,7 @@ seq_len=96
 enc_in=321
 random_seed=2024
 
-# pred_lens=(96 192 336 720)
-pred_lens=(720 336 192 96)
+pred_lens=(96 192 336 720)
 
 patchlens=(6)
 betas=(0 0.001 0.002 0.005 0.01 0.02 0.05 0.1 0.2 0.5 1.0)

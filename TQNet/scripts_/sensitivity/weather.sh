@@ -6,8 +6,8 @@ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 ############################################
 # Parallel config
 ############################################
-MAX_JOBS=2
-AVAILABLE_GPUS=(0 1)
+MAX_JOBS=4
+AVAILABLE_GPUS=(0 1 2 3)
 MAX_RETRIES=1
 
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
