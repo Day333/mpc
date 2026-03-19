@@ -160,6 +160,11 @@ if __name__ == '__main__':
     parser.add_argument('--beta_add_loss', type=float, default=0.1, help='beta')
     ################################### add #####################################
 
+    #########DBLoss########$
+    parser.add_argument('--alpha_DBLoss', type=float, default=1.0, help='alpha')
+    parser.add_argument('--beta_DBLoss', type=float, default=0.1, help='beta')
+    #########DBLoss#########
+    
     args = parser.parse_args()
     if torch.cuda.is_available() and args.use_gpu:
         args.device = torch.device('cuda:{}'.format(args.gpu))

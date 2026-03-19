@@ -1,0 +1,84 @@
+long_term_forecast_ETTh1_96_96_DLinear_ETTh1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.3961581289768219, mae:0.4108412563800812
+
+long_term_forecast_ETTh1_96_192_DLinear_ETTh1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.4450070559978485, mae:0.4403814673423767
+
+long_term_forecast_ETTh1_96_336_DLinear_ETTh1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.48741069436073303, mae:0.46540388464927673
+
+long_term_forecast_ETTh1_96_720_DLinear_ETTh1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.5126377940177917, mae:0.5104050636291504
+
+long_term_forecast_ETTh2_96_96_DLinear_ETTh2_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.3414474129676819, mae:0.3952932059764862
+
+long_term_forecast_ETTh2_96_192_DLinear_ETTh2_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.4819091558456421, mae:0.4791976511478424
+
+long_term_forecast_ETTh2_96_336_DLinear_ETTh2_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.59293133020401, mae:0.5421714782714844
+
+long_term_forecast_ETTh2_96_720_DLinear_ETTh2_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.8403232097625732, mae:0.661099374294281
+
+long_term_forecast_ETTm1_96_96_DLinear_ETTm1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.34594660997390747, mae:0.3737088739871979
+
+long_term_forecast_ETTm1_96_192_DLinear_ETTm1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.38181474804878235, mae:0.39106860756874084
+
+long_term_forecast_ETTm1_96_336_DLinear_ETTm1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.4152672588825226, mae:0.4150267541408539
+
+long_term_forecast_ETTm1_96_720_DLinear_ETTm1_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.4729785919189453, mae:0.4509398639202118
+
+long_term_forecast_ETTm2_96_96_DLinear_ETTm2_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.19342845678329468, mae:0.2928171455860138
+
+long_term_forecast_ETTm2_96_336_DLinear_ETTm2_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.38492700457572937, mae:0.4294673502445221
+
+long_term_forecast_ETTm2_96_192_DLinear_ETTm2_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.28453242778778076, mae:0.36138325929641724
+
+long_term_forecast_ETTm2_96_720_DLinear_ETTm2_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.5561042428016663, mae:0.5234867334365845
+
+long_term_forecast_weather_96_96_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.19622044265270233, mae:0.2561100721359253
+
+long_term_forecast_weather_96_192_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.23893193900585175, mae:0.29921039938926697
+
+long_term_forecast_weather_96_336_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.2810533940792084, mae:0.3305887281894684
+
+long_term_forecast_weather_96_720_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.3453567922115326, mae:0.38188397884368896
+
+long_term_forecast_ECL_96_96_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.21036772429943085, mae:0.3015504777431488
+
+long_term_forecast_ECL_96_192_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.21018026769161224, mae:0.3047430217266083
+
+long_term_forecast_ECL_96_336_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.22310742735862732, mae:0.31920331716537476
+
+long_term_forecast_traffic_96_96_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.6965439915657043, mae:0.4287455081939697
+
+long_term_forecast_ECL_96_720_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.2577686309814453, mae:0.3496456444263458
+
+long_term_forecast_traffic_96_192_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.6465986371040344, mae:0.40741369128227234
+
+long_term_forecast_traffic_96_336_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.6532174944877625, mae:0.4097227454185486
+
+long_term_forecast_traffic_96_720_DLinear_custom_addlossNone_numpairsmax_patchlen16_alpha1.0_beta0.1  
+mse:0.6940094232559204, mae:0.4286252558231354
+
