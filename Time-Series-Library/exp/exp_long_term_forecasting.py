@@ -255,7 +255,7 @@ class Exp_Long_Term_Forecast(Exp_Basic):
                     # loss_add = (pred_diff - true_diff).abs().mean()
 
                     # === Chunking ===
-                    chunk_size = 1024
+                    chunk_size = 64
                     num_valid_pairs = len(idx_i)
                     loss_add = 0.0
                     
