@@ -1,0 +1,159 @@
+#!/usr/bin/env bash
+set -e
+
+########################################
+# CONFIG
+########################################
+
+MAX_JOBS=6
+AVAILABLE_GPUS=(0 1 2 3 5 6)
+MAX_RETRIES=1
+NUM_GPUS=${#AVAILABLE_GPUS[@]}
+
+########################################
+# SEMAPHORE
+########################################
+
+SEMAPHORE=/tmp/gs_semaphore_cfpt_etth2
+mkfifo $SEMAPHORE
+exec 9<>$SEMAPHORE
+rm $SEMAPHORE
+
+for ((i=0;i<${MAX_JOBS};i++)); do echo >&9; done
+
+########################################
+# FUNCTIONS
+########################################
+
+run_job() {
+  local gpu_id=$1
+  local cmd=$2
+  local log_file=$3
+  local model_id=$4
+  local attempt=0
+
+  while (( attempt <= MAX_RETRIES )); do
+    echo "▶ [GPU $gpu_id] $model_id"
+    CUDA_VISIBLE_DEVICES=$gpu_id $cmd >> "$log_file" 2>&1
+
+    if [ $? -eq 0 ]; then
+        echo "✅ Success: $model_id"
+        break
+    else
+        echo "❌ Failed: $model_id"
+        attempt=$((attempt + 1))
+    fi
+  done
+
+  echo >&9
+}
+
+is_finished() {
+  local log_file="$1"
+  grep -Eq 'mse:[[:space:]]*[0-9]+' "$log_file"
+}
+
+########################################
+# SETTINGS
+########################################
+
+model_name=CFPT
+seq_len=96
+seed=2025
+
+mkdir -p logs
+
+gpu_ptr=0
+
+########################################
+# MAIN LOOP
+########################################
+
+for pred_len in 96 192 336 720
+do
+
+    if [[ "$pred_len" == "96" ]]; then
+        beta_model=0.6
+        d_model=256
+        batch_size=4
+        ksize=2
+        e_layers=1
+        time_features="HourOfDay"
+    elif [[ "$pred_len" == "192" ]]; then
+        beta_model=0.4
+        d_model=1024
+        batch_size=16
+        ksize=2
+        e_layers=1
+        time_features="HourOfDay"
+    elif [[ "$pred_len" == "336" ]]; then
+        beta_model=0.9
+        d_model=512
+        batch_size=128
+        ksize=3
+        e_layers=6
+        time_features="HourOfDay"
+    else
+        beta_model=0.4
+        d_model=1024
+        batch_size=32
+        ksize=2
+        e_layers=1
+        time_features="HourOfDay MonthOfYear SeasonOfYear"
+    fi
+
+    read -u9
+
+    model_id="ETTh2_${seq_len}_${pred_len}_base"
+    log_file="logs/${model_name}_${model_id}.log"
+
+    if [ -f "$log_file" ] && is_finished "$log_file"; then
+        echo "⏭ Skip: $model_id"
+        echo >&9
+        continue
+    fi
+
+    gpu_id=${AVAILABLE_GPUS[$gpu_ptr]}
+    gpu_ptr=$(( (gpu_ptr + 1) % NUM_GPUS ))
+
+    cmd="python -u run.py \
+      --time_feature_types ${time_features} \
+      --task_name long_term_forecast \
+      --is_training 1 \
+      --with_curve 0 \
+      --root_path ./dataset/ETT-small/ \
+      --data_path ETTh2.csv \
+      --model_id ETTh2_${seq_len}_${pred_len} \
+      --model CFPT \
+      --data ETTh2 \
+      --features M \
+      --freq h \
+      --seq_len ${seq_len} \
+      --pred_len ${pred_len} \
+      --factor 3 \
+      --enc_in 7 \
+      --dec_in 7 \
+      --c_out 7 \
+      --des Exp \
+      --rda 1 \
+      --rdb 1 \
+      --ksize ${ksize} \
+      --beta ${beta_model} \
+      --learning_rate 0.0001 \
+      --batch_size ${batch_size} \
+      --e_layers ${e_layers} \
+      --d_model ${d_model} \
+      --t_layers 3 \
+      --train_epochs 10 \
+      --num_workers 10 \
+      --dropout 0.0 \
+      --loss DBLoss \
+      --seed ${seed} \
+      --itr 1"
+
+    run_job $gpu_id "$cmd" "$log_file" "$model_id" &
+
+done
+
+wait
+echo "All CFPT ETTh2 base jobs finished."

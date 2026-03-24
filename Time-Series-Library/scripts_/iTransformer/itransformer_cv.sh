@@ -5,8 +5,8 @@ set -e
 # CONFIG
 ########################################
 
-MAX_JOBS=2
-AVAILABLE_GPUS=(5 6)
+MAX_JOBS=4
+AVAILABLE_GPUS=(0 2 3 6)
 MAX_RETRIES=1
 NUM_GPUS=${#AVAILABLE_GPUS[@]}
 
@@ -14,7 +14,7 @@ NUM_GPUS=${#AVAILABLE_GPUS[@]}
 # SEMAPHORE
 ########################################
 
-SEMAPHORE=/tmp/gs_semaphore_dlinear_all_datasets
+SEMAPHORE=/tmp/gs_semaphore_itransformer_fcv_search
 mkfifo $SEMAPHORE
 exec 9<>$SEMAPHORE
 rm $SEMAPHORE
@@ -70,16 +70,16 @@ PY
 # SETTINGS
 ########################################
 
-model_name=DLinear
+model_name="iTransformer"
 seq_len=96
 
 datasets=("ETTh1" "ETTh2" "ETTm1" "ETTm2" "Weather" "ECL" "Traffic")
 pred_lens=(96 192 336 720)
+
 patchlens=(6 3)
 betas=(0.5 0.6 0.7 0.8 0.9 1.0)
 
 mkdir -p logs
-
 gpu_ptr=0
 
 ########################################
@@ -137,31 +137,22 @@ do
   # 2. Iterate over prediction lengths
   for pred_len in "${pred_lens[@]}"
   do
-    # pred_len-specific hyperparameters 
-    # (Note: You can move this into the dataset switch block if hyperparams vary by dataset)
+
     if [[ "$pred_len" == "96" ]]; then
       batch_size=32
-      d_ff=2048
-      d_model=512
       learning_rate=0.005
     elif [[ "$pred_len" == "192" ]]; then
       batch_size=64
-      d_ff=2048
-      d_model=512
       learning_rate=0.001
     elif [[ "$pred_len" == "336" ]]; then
       batch_size=32
-      d_ff=2048
-      d_model=512
       learning_rate=0.005
     else
       batch_size=64
-      d_ff=2048
-      d_model=512
       learning_rate=0.0001
     fi
 
-    # 3. Iterate over search space
+    # 3. Iterate over search space (patchlens & betas)
     for loss_patchlen in "${patchlens[@]}"
     do
       for beta_add_loss in "${betas[@]}"
@@ -194,7 +185,7 @@ do
           --seq_len ${seq_len} \
           --label_len 48 \
           --pred_len ${pred_len} \
-          --e_layers 2 \
+          --e_layers 1 \
           --d_layers 1 \
           --factor 3 \
           --enc_in ${enc_in} \
@@ -203,9 +194,11 @@ do
           --des Exp \
           --itr 1 \
           --batch_size ${batch_size} \
-          --d_ff ${d_ff} \
-          --d_model ${d_model} \
           --learning_rate ${learning_rate} \
+          --d_model 128 \
+          --d_ff 256 \
+          --n_heads 1 \
+          --dropout 0.0 \
           --add_loss fcv \
           --loss_patchlen ${loss_patchlen} \
           --alpha_add_loss ${alpha_add_loss} \
@@ -222,4 +215,4 @@ done
 ########################################
 
 wait
-echo "🎉 All DLinear FCV search jobs for all datasets finished."
+echo "🎉 All iTransformer FCV search jobs for all datasets finished."

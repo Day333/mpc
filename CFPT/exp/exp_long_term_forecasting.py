@@ -10,6 +10,7 @@ import os
 import time
 import warnings
 import numpy as np
+from utils.tools import DBLoss
 
 warnings.filterwarnings('ignore')
 
@@ -38,6 +39,8 @@ class Exp_Long_Term_Forecast(Exp_Basic):
             criterion = nn.L1Loss()
         elif self.args.loss.lower() == 'mse':
             criterion = nn.MSELoss()
+        elif self.args.loss == "DBLoss":
+            criterion = DBLoss(self.args.alpha_DBLoss, self.args.beta_DBLoss)
         else:
             raise NotImplementedError
         return criterion

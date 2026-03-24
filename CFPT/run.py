@@ -160,6 +160,12 @@ if __name__ == '__main__':
     parser.add_argument('--loss_patchlen', type=int, default=16, help='loss_patchlen')
     parser.add_argument('--alpha_add_loss', type=float, default=1.0, help='alpha')
     parser.add_argument('--beta_add_loss', type=float, default=0.1, help='beta')
+    
+    #########DBLoss########$
+    parser.add_argument('--alpha_DBLoss', type=float, default=0.2, help='alpha')
+    parser.add_argument('--beta_DBLoss', type=float, default=0.5, help='beta')
+    #########DBLoss#########
+    
     ################################### add #####################################
 
 
